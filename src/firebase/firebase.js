@@ -63,7 +63,7 @@ export const iniciarSesionAnonima = async () => {
 export { app, db, auth };
 export { signInAnonymously, onAuthStateChanged };
 
-export default {
+const firebaseExports = {
   app,
   db,
   auth,
@@ -71,3 +71,5 @@ export default {
   onAuthStateChanged,
   iniciarSesionAnonima,
 };
+
+export default firebaseExports;

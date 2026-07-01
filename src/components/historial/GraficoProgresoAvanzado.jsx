@@ -2,7 +2,6 @@ import React from "react";
 import {
   LineChart,
   Line,
-  BarChart,
   Bar,
   XAxis,
   YAxis,
@@ -13,6 +12,7 @@ import {
   ComposedChart,
   Area,
 } from "recharts";
+import "./GraficoProgresoAvanzado.css";
 
 export const GraficoProgresoAvanzado = ({
   historial,
@@ -59,17 +59,11 @@ export const GraficoProgresoAvanzado = ({
 
   return (
     <div>
-      <div style={{ marginBottom: "16px" }}>
+      <div className="grafico-avanzado__selector">
         <select
+          className="grafico-avanzado__select"
           value={ejercicioSeleccionado}
           onChange={(e) => setEjercicioSeleccionado(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            borderRadius: "8px",
-            border: "1px solid #e2e8f0",
-            fontSize: "14px",
-          }}
         >
           <option value="">Selecciona un ejercicio</option>
           {ejercicios.map((ej) => (
@@ -82,24 +76,29 @@ export const GraficoProgresoAvanzado = ({
 
       {ejercicioSeleccionado && datos.length > 0 ? (
         <div>
-          <h4 style={{ marginBottom: "12px" }}>
+          <h4 className="grafico-avanzado__titulo">
             Evolución de {ejercicioSeleccionado}
           </h4>
 
-          <div style={{ marginBottom: "24px" }}>
+          <div className="grafico-avanzado__grafico">
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={datos}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="fecha" />
-                <YAxis yAxisId="left" />
-                <YAxis yAxisId="right" orientation="right" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
+                <XAxis dataKey="fecha" stroke="#6b6862" fontSize={11} />
+                <YAxis yAxisId="left" stroke="#6b6862" fontSize={11} />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  stroke="#6b6862"
+                  fontSize={11}
+                />
                 <Tooltip />
                 <Legend />
                 <Line
                   yAxisId="left"
                   type="monotone"
                   dataKey="carga"
-                  stroke="#667eea"
+                  stroke="#e8491c"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   name="Carga (kg)"
@@ -108,7 +107,7 @@ export const GraficoProgresoAvanzado = ({
                   yAxisId="right"
                   type="monotone"
                   dataKey="rpe"
-                  stroke="#764ba2"
+                  stroke="#f2b705"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   name="RPE"
@@ -120,88 +119,38 @@ export const GraficoProgresoAvanzado = ({
           <div>
             <ResponsiveContainer width="100%" height={200}>
               <ComposedChart data={datos}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="fecha" />
-                <YAxis />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
+                <XAxis dataKey="fecha" stroke="#6b6862" fontSize={11} />
+                <YAxis stroke="#6b6862" fontSize={11} />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="volumen" fill="#667eea" name="Volumen total" />
+                <Bar dataKey="volumen" fill="#e8491c" name="Volumen total" />
                 <Area
                   type="monotone"
                   dataKey="carga"
-                  fill="#764ba2"
-                  stroke="#764ba2"
+                  fill="#f2b70555"
+                  stroke="#f2b705"
                   name="Carga media"
                 />
               </ComposedChart>
             </ResponsiveContainer>
           </div>
 
-          <div
-            style={{
-              marginTop: "16px",
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "8px",
-            }}
-          >
-            <div
-              style={{
-                background: "#f7fafc",
-                padding: "12px",
-                borderRadius: "8px",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "#667eea",
-                }}
-              >
+          <div className="grafico-avanzado__stats">
+            <div className="grafico-avanzado__stat">
+              <div className="grafico-avanzado__stat-valor grafico-avanzado__stat-valor--iron">
                 {datos[datos.length - 1]?.carga || 0} kg
               </div>
-              <div style={{ fontSize: "12px", color: "#718096" }}>
-                Carga actual
-              </div>
+              <div className="grafico-avanzado__stat-label">Carga actual</div>
             </div>
-            <div
-              style={{
-                background: "#f7fafc",
-                padding: "12px",
-                borderRadius: "8px",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "#764ba2",
-                }}
-              >
+            <div className="grafico-avanzado__stat">
+              <div className="grafico-avanzado__stat-valor grafico-avanzado__stat-valor--plate">
                 {datos[0]?.carga || 0} kg
               </div>
-              <div style={{ fontSize: "12px", color: "#718096" }}>
-                Carga inicial
-              </div>
+              <div className="grafico-avanzado__stat-label">Carga inicial</div>
             </div>
-            <div
-              style={{
-                background: "#f7fafc",
-                padding: "12px",
-                borderRadius: "8px",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "#48bb78",
-                }}
-              >
+            <div className="grafico-avanzado__stat">
+              <div className="grafico-avanzado__stat-valor grafico-avanzado__stat-valor--success">
                 {(() => {
                   const primero = datos[0]?.carga || 0;
                   const ultimo = datos[datos.length - 1]?.carga || 0;
@@ -210,12 +159,12 @@ export const GraficoProgresoAvanzado = ({
                   return `${progreso > 0 ? "+" : ""}${progreso.toFixed(1)}%`;
                 })()}
               </div>
-              <div style={{ fontSize: "12px", color: "#718096" }}>Progreso</div>
+              <div className="grafico-avanzado__stat-label">Progreso</div>
             </div>
           </div>
         </div>
       ) : (
-        <div style={{ textAlign: "center", padding: "40px", color: "#718096" }}>
+        <div className="grafico-avanzado__vacio">
           {ejercicioSeleccionado
             ? "📭 Aún no hay datos de este ejercicio"
             : "👆 Selecciona un ejercicio para ver tu progreso"}

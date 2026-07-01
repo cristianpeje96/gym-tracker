@@ -1,0 +1,55 @@
+.comparativa__vacio {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-ink-soft);
+  text-transform: none;
+}
+
+.comparativa__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.comparativa__select {
+  padding: 8px;
+  border-radius: var(--border-radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper);
+  font-size: 13px;
+}
+
+.comparativa__grafico {
+  margin-bottom: var(--spacing-lg);
+}
+
+.comparativa__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.comparativa__card {
+  background: var(--color-paper);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.comparativa__card-semana {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.comparativa__card-datos {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

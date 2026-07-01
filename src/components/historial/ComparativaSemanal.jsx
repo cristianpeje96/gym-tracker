@@ -9,14 +9,20 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import "./ComparativaSemanal.css";
 
 export const ComparativaSemanal = ({ historial }) => {
   const [semanas, setSemanas] = useState(4);
 
+  const getSemana = (fecha) => {
+    const start = new Date(fecha.getFullYear(), 0, 1);
+    const diff = (fecha - start) / (7 * 24 * 60 * 60 * 1000);
+    return Math.floor(diff) + 1;
+  };
+
   const procesarDatos = () => {
     if (!historial || historial.length === 0) return [];
 
-    // Agrupar por semana
     const semanasMap = new Map();
 
     historial.forEach((sesion) => {
@@ -29,7 +35,6 @@ export const ComparativaSemanal = ({ historial }) => {
       semanasMap.get(semana).push(sesion);
     });
 
-    // Tomar las últimas N semanas
     const semanasArray = Array.from(semanasMap.entries()).slice(-semanas);
 
     return semanasArray.map(([semana, sesiones]) => {
@@ -71,17 +76,11 @@ export const ComparativaSemanal = ({ historial }) => {
     });
   };
 
-  const getSemana = (fecha) => {
-    const start = new Date(fecha.getFullYear(), 0, 1);
-    const diff = (fecha - start) / (7 * 24 * 60 * 60 * 1000);
-    return Math.floor(diff) + 1;
-  };
-
   const datos = procesarDatos();
 
   if (datos.length === 0) {
     return (
-      <div style={{ textAlign: "center", padding: "40px", color: "#718096" }}>
+      <div className="comparativa__vacio">
         📊 Aún no hay suficientes datos para comparar semanas
       </div>
     );
@@ -89,23 +88,12 @@ export const ComparativaSemanal = ({ historial }) => {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "16px",
-        }}
-      >
+      <div className="comparativa__header">
         <h4>Comparativa Semanal</h4>
         <select
+          className="comparativa__select"
           value={semanas}
           onChange={(e) => setSemanas(parseInt(e.target.value))}
-          style={{
-            padding: "8px",
-            borderRadius: "8px",
-            border: "1px solid #e2e8f0",
-          }}
         >
           <option value={4}>Últimas 4 semanas</option>
           <option value={8}>Últimas 8 semanas</option>
@@ -113,20 +101,25 @@ export const ComparativaSemanal = ({ historial }) => {
         </select>
       </div>
 
-      <div style={{ marginBottom: "24px" }}>
+      <div className="comparativa__grafico">
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="semana" />
-            <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
+            <XAxis dataKey="semana" stroke="#6b6862" fontSize={12} />
+            <YAxis yAxisId="left" stroke="#6b6862" fontSize={12} />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              stroke="#6b6862"
+              fontSize={12}
+            />
             <Tooltip />
             <Legend />
             <Line
               yAxisId="left"
               type="monotone"
               dataKey="volumen"
-              stroke="#667eea"
+              stroke="#e8491c"
               strokeWidth={2}
               dot={{ r: 4 }}
               name="Volumen (kg)"
@@ -135,7 +128,7 @@ export const ComparativaSemanal = ({ historial }) => {
               yAxisId="right"
               type="monotone"
               dataKey="rpe"
-              stroke="#764ba2"
+              stroke="#f2b705"
               strokeWidth={2}
               dot={{ r: 4 }}
               name="RPE medio"
@@ -144,27 +137,11 @@ export const ComparativaSemanal = ({ historial }) => {
         </ResponsiveContainer>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-          gap: "8px",
-        }}
-      >
+      <div className="comparativa__grid">
         {datos.map((d, idx) => (
-          <div
-            key={idx}
-            style={{
-              background: "#f7fafc",
-              padding: "12px",
-              borderRadius: "8px",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ fontWeight: "bold", fontSize: "14px" }}>
-              {d.semana}
-            </div>
-            <div style={{ fontSize: "12px", color: "#718096" }}>
+          <div key={idx} className="comparativa__card">
+            <div className="comparativa__card-semana">{d.semana}</div>
+            <div className="comparativa__card-datos">
               <div>🏋️ {d.volumen}k</div>
               <div>📊 {d.rpe}</div>
               <div>📅 {d.sesiones} ses</div>

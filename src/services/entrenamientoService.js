@@ -1,12 +1,5 @@
 import { db } from "../firebase/firebase";
-import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  arrayUnion,
-  arrayRemove,
-} from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
 export const entrenamientoService = {
   // Guardar sesión de entrenamiento

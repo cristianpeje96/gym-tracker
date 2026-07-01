@@ -33,6 +33,7 @@ export const Perfil = () => {
     if (user) {
       cargarDatos();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const cargarDatos = async () => {

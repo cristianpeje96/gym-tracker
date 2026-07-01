@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { auth, onAuthStateChanged } from "../../firebase/firebase";
+import { useAuth } from "../../hooks/useAuth";
 import { entrenamientoService } from "../../services/entrenamientoService";
-import {
-  obtenerRecomendaciones,
-  FACTORES_ACTIVIDAD,
-} from "../../utils/calculosNutricionales";
+import { nutricionService } from "../../services/nutricionService";
+import { obtenerRecomendaciones } from "../../utils/calculosNutricionales";
+import "./ControlNutricional.css";
 
 export const ControlNutricional = () => {
-  const [userId, setUserId] = useState(null);
+  const { user } = useAuth();
   const [perfil, setPerfil] = useState(null);
   const [objetivo, setObjetivo] = useState("mantenimiento");
-  const [nivelActividad, setNivelActividad] = useState("moderado");
+  const [nivelActividad] = useState("moderado");
   const [recomendaciones, setRecomendaciones] = useState(null);
   const [pesoActual, setPesoActual] = useState("");
   const [pesosRegistrados, setPesosRegistrados] = useState([]);
   const [comidas, setComidas] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    if (!auth) {
-      console.error("Firebase auth no inicializado");
-      return;
-    }
-
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        setUserId(user.uid);
-        try {
-          const perfilData = await entrenamientoService.obtenerPerfil(user.uid);
-          if (perfilData) {
-            setPerfil(perfilData);
-            setPesoActual(perfilData.peso || "");
-          }
-        } catch (error) {
-          console.error("Error cargando perfil:", error);
-        }
+    const cargarDatos = async () => {
+      if (!user) {
+        setCargando(false);
+        return;
       }
-    });
+      try {
+        const perfilData = await entrenamientoService.obtenerPerfil(user.uid);
+        if (perfilData) {
+          setPerfil(perfilData);
+          setPesoActual(perfilData.peso || "");
+        }
 
-    return () => {
-      if (unsubscribe) unsubscribe();
+        // Bug corregido: antes los pesos y comidas registrados solo
+        // vivían en memoria y se perdían al recargar la página.
+        const { pesos, comidas: comidasGuardadas } =
+          await nutricionService.obtenerDatos(user.uid);
+        setPesosRegistrados(pesos);
+        setComidas(comidasGuardadas);
+      } catch (error) {
+        console.error("Error cargando datos de nutrición:", error);
+      } finally {
+        setCargando(false);
+      }
     };
-  }, []);
+    cargarDatos();
+  }, [user]);
 
   useEffect(() => {
     if (perfil && perfil.peso && perfil.altura && perfil.edad && perfil.sexo) {
@@ -56,18 +58,19 @@ export const ControlNutricional = () => {
     }
   }, [perfil, objetivo, nivelActividad]);
 
-  const handleRegistrarPeso = () => {
-    if (!pesoActual) return;
+  const handleRegistrarPeso = async () => {
+    if (!pesoActual || !user) return;
     const nuevoRegistro = {
       fecha: new Date().toISOString().split("T")[0],
       peso: parseFloat(pesoActual),
     };
-    setPesosRegistrados([...pesosRegistrados, nuevoRegistro]);
-    setPesoActual("");
+    setPesosRegistrados((prev) => [...prev, nuevoRegistro]);
+    await nutricionService.registrarPeso(user.uid, nuevoRegistro);
   };
 
-  const handleRegistrarComida = (e) => {
+  const handleRegistrarComida = async (e) => {
     e.preventDefault();
+    if (!user) return;
     const formData = new FormData(e.target);
     const comida = {
       fecha: new Date().toISOString().split("T")[0],
@@ -78,7 +81,8 @@ export const ControlNutricional = () => {
       carbohidratos: parseInt(formData.get("carbohidratos")) || 0,
       grasas: parseInt(formData.get("grasas")) || 0,
     };
-    setComidas([...comidas, comida]);
+    setComidas((prev) => [...prev, comida]);
+    await nutricionService.registrarComida(user.uid, comida);
     e.target.reset();
   };
 
@@ -98,65 +102,36 @@ export const ControlNutricional = () => {
 
   const totalDia = calcularTotalDia();
 
-  if (!userId) {
+  if (!user || cargando) {
     return (
-      <div style={{ padding: "16px", textAlign: "center" }}>
+      <div className="nutricion__cargando">
         <p>🔄 Conectando a la nube...</p>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: "16px", maxWidth: "600px", margin: "0 auto" }}>
-      <h2 style={{ marginBottom: "16px" }}>🥗 Control Nutricional</h2>
+    <div className="nutricion">
+      <h2 className="nutricion__titulo">🥗 Control Nutricional</h2>
 
       {!perfil ? (
-        <div
-          style={{
-            background: "white",
-            borderRadius: "16px",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
+        <div className="nutricion__card nutricion__card--centrada">
           <p>
             📝 Completa tu perfil primero para obtener recomendaciones
             personalizadas
           </p>
-          <p style={{ fontSize: "14px", color: "#718096", marginTop: "8px" }}>
+          <p className="nutricion__nota">
             Ve a la sección de Perfil para ingresar tus datos
           </p>
         </div>
       ) : (
         <>
-          {/* Selector de Objetivo */}
-          <div
-            style={{
-              background: "white",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "16px",
-            }}
-          >
+          <div className="nutricion__card">
             <h4>🎯 Objetivo</h4>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "8px",
-                marginTop: "12px",
-              }}
-            >
+            <div className="nutricion__objetivos">
               <button
                 onClick={() => setObjetivo("deficit")}
-                style={{
-                  padding: "12px",
-                  background: objetivo === "deficit" ? "#f56565" : "#f7fafc",
-                  color: objetivo === "deficit" ? "white" : "#4a5568",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
+                className={`nutricion__objetivo-btn ${objetivo === "deficit" ? "nutricion__objetivo-btn--deficit" : ""}`}
               >
                 📉 Déficit
                 <br />
@@ -164,15 +139,7 @@ export const ControlNutricional = () => {
               </button>
               <button
                 onClick={() => setObjetivo("mantenimiento")}
-                style={{
-                  padding: "12px",
-                  background:
-                    objetivo === "mantenimiento" ? "#48bb78" : "#f7fafc",
-                  color: objetivo === "mantenimiento" ? "white" : "#4a5568",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
+                className={`nutricion__objetivo-btn ${objetivo === "mantenimiento" ? "nutricion__objetivo-btn--mantenimiento" : ""}`}
               >
                 ⚖️ Mantener
                 <br />
@@ -180,14 +147,7 @@ export const ControlNutricional = () => {
               </button>
               <button
                 onClick={() => setObjetivo("superavit")}
-                style={{
-                  padding: "12px",
-                  background: objetivo === "superavit" ? "#4299e1" : "#f7fafc",
-                  color: objetivo === "superavit" ? "white" : "#4a5568",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
+                className={`nutricion__objetivo-btn ${objetivo === "superavit" ? "nutricion__objetivo-btn--superavit" : ""}`}
               >
                 📈 Superávit
                 <br />
@@ -196,227 +156,87 @@ export const ControlNutricional = () => {
             </div>
           </div>
 
-          {/* Recomendaciones Personalizadas */}
           {recomendaciones && (
-            <div
-              style={{
-                background: "white",
-                borderRadius: "16px",
-                padding: "20px",
-                marginBottom: "16px",
-              }}
-            >
+            <div className="nutricion__card">
               <h4>📊 Recomendaciones Personalizadas</h4>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "12px",
-                  marginTop: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    background: "#f7fafc",
-                    padding: "12px",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <div style={{ fontSize: "12px", color: "#718096" }}>
-                    Calorías diarias
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      color: "#667eea",
-                    }}
-                  >
+              <div className="nutricion__grid-2">
+                <div className="nutricion__mini-card">
+                  <div className="nutricion__mini-label">Calorías diarias</div>
+                  <div className="nutricion__mini-valor nutricion__mini-valor--iron">
                     {recomendaciones.caloriasObjetivo} kcal
                   </div>
                 </div>
-                <div
-                  style={{
-                    background: "#f7fafc",
-                    padding: "12px",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <div style={{ fontSize: "12px", color: "#718096" }}>
-                    Mantenimiento
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      color: "#718096",
-                    }}
-                  >
+                <div className="nutricion__mini-card">
+                  <div className="nutricion__mini-label">Mantenimiento</div>
+                  <div className="nutricion__mini-valor">
                     {recomendaciones.mantenimiento} kcal
                   </div>
                 </div>
               </div>
 
-              <div style={{ marginTop: "12px" }}>
-                <h5 style={{ fontSize: "14px", marginBottom: "8px" }}>
-                  Macros diarios
-                </h5>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    gap: "8px",
-                  }}
-                >
-                  <div
-                    style={{
-                      background: "#ebf8ff",
-                      padding: "12px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        color: "#4299e1",
-                      }}
-                    >
+              <div className="nutricion__macros">
+                <h5 className="nutricion__subtitulo">Macros diarios</h5>
+                <div className="nutricion__grid-3">
+                  <div className="nutricion__macro nutricion__macro--proteina">
+                    <div className="nutricion__macro-valor">
                       {recomendaciones.macros.proteinas}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Proteínas
-                    </div>
+                    <div className="nutricion__macro-label">Proteínas</div>
                   </div>
-                  <div
-                    style={{
-                      background: "#fef5e7",
-                      padding: "12px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        color: "#ed8936",
-                      }}
-                    >
+                  <div className="nutricion__macro nutricion__macro--carbo">
+                    <div className="nutricion__macro-valor">
                       {recomendaciones.macros.carbohidratos}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Carbohidratos
-                    </div>
+                    <div className="nutricion__macro-label">Carbohidratos</div>
                   </div>
-                  <div
-                    style={{
-                      background: "#fef5e7",
-                      padding: "12px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        color: "#ed8936",
-                      }}
-                    >
+                  <div className="nutricion__macro nutricion__macro--grasa">
+                    <div className="nutricion__macro-valor">
                       {recomendaciones.macros.grasas}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Grasas
-                    </div>
+                    <div className="nutricion__macro-label">Grasas</div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ marginTop: "12px" }}>
-                <h5 style={{ fontSize: "14px", marginBottom: "8px" }}>
-                  💡 Consejos
-                </h5>
-                <ul
-                  style={{
-                    fontSize: "13px",
-                    color: "#4a5568",
-                    paddingLeft: "20px",
-                  }}
-                >
+              <div className="nutricion__consejos">
+                <h5 className="nutricion__subtitulo">💡 Consejos</h5>
+                <ul className="nutricion__lista-consejos">
                   {recomendaciones.consejos.map((consejo, idx) => (
-                    <li key={idx} style={{ marginBottom: "4px" }}>
-                      {consejo}
-                    </li>
+                    <li key={idx}>{consejo}</li>
                   ))}
                 </ul>
               </div>
             </div>
           )}
 
-          {/* Registro de Peso */}
-          <div
-            style={{
-              background: "white",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "16px",
-            }}
-          >
+          <div className="nutricion__card">
             <h4>⚖️ Registrar Peso</h4>
-            <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
+            <div className="nutricion__registro-peso">
               <input
                 type="number"
                 value={pesoActual}
                 onChange={(e) => setPesoActual(e.target.value)}
                 placeholder="Peso actual (kg)"
-                style={{
-                  flex: 1,
-                  padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #e2e8f0",
-                }}
+                className="nutricion__input"
               />
               <button
                 onClick={handleRegistrarPeso}
-                style={{
-                  padding: "10px 20px",
-                  background: "#667eea",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
+                className="nutricion__btn-primario"
               >
                 Registrar
               </button>
             </div>
 
             {pesosRegistrados.length > 0 && (
-              <div style={{ marginTop: "12px" }}>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    marginBottom: "8px",
-                  }}
-                >
+              <div className="nutricion__historial-pesos">
+                <div className="nutricion__historial-titulo">
                   Últimos registros:
                 </div>
                 {pesosRegistrados
                   .slice(-5)
                   .reverse()
                   .map((p, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        fontSize: "13px",
-                        color: "#4a5568",
-                        padding: "4px 0",
-                        borderBottom: "1px solid #f0f0f0",
-                      }}
-                    >
+                    <div key={idx} className="nutricion__historial-item">
                       {p.fecha}: <strong>{p.peso} kg</strong>
                     </div>
                   ))}
@@ -424,35 +244,14 @@ export const ControlNutricional = () => {
             )}
           </div>
 
-          {/* Registro de Comidas */}
-          <div
-            style={{
-              background: "white",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "16px",
-            }}
-          >
+          <div className="nutricion__card">
             <h4>🍽️ Registrar Comida</h4>
             <form
               onSubmit={handleRegistrarComida}
-              style={{ marginTop: "12px" }}
+              className="nutricion__form-comida"
             >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "8px",
-                }}
-              >
-                <select
-                  name="tipo"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
-                >
+              <div className="nutricion__grid-2">
+                <select name="tipo" className="nutricion__input">
                   <option value="desayuno">Desayuno</option>
                   <option value="almuerzo">Almuerzo</option>
                   <option value="cena">Cena</option>
@@ -461,144 +260,67 @@ export const ControlNutricional = () => {
                 <input
                   name="nombre"
                   placeholder="Nombre del plato"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
+                  className="nutricion__input"
                 />
                 <input
                   name="calorias"
                   type="number"
                   placeholder="Calorías"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
+                  className="nutricion__input"
                 />
                 <input
                   name="proteinas"
                   type="number"
                   placeholder="Proteínas (g)"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
+                  className="nutricion__input"
                 />
                 <input
                   name="carbohidratos"
                   type="number"
                   placeholder="Carbohidratos (g)"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
+                  className="nutricion__input"
                 />
                 <input
                   name="grasas"
                   type="number"
                   placeholder="Grasas (g)"
-                  style={{
-                    padding: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
+                  className="nutricion__input"
                 />
               </div>
-              <button
-                type="submit"
-                style={{
-                  marginTop: "12px",
-                  padding: "10px 20px",
-                  background: "#48bb78",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
-              >
+              <button type="submit" className="nutricion__btn-agregar">
                 + Agregar Comida
               </button>
             </form>
 
-            {/* Resumen del día */}
             {comidas.filter(
               (c) => c.fecha === new Date().toISOString().split("T")[0],
             ).length > 0 && (
-              <div style={{ marginTop: "16px" }}>
-                <h5 style={{ fontSize: "14px", marginBottom: "8px" }}>
-                  📊 Resumen del día
-                </h5>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(4, 1fr)",
-                    gap: "8px",
-                  }}
-                >
-                  <div
-                    style={{
-                      background: "#f7fafc",
-                      padding: "8px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: "bold" }}>
+              <div className="nutricion__resumen-dia">
+                <h5 className="nutricion__subtitulo">📊 Resumen del día</h5>
+                <div className="nutricion__grid-4">
+                  <div className="nutricion__resumen-item">
+                    <div className="nutricion__resumen-valor">
                       {totalDia.calorias} kcal
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Calorías
-                    </div>
+                    <div className="nutricion__resumen-label">Calorías</div>
                   </div>
-                  <div
-                    style={{
-                      background: "#f7fafc",
-                      padding: "8px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: "bold", color: "#4299e1" }}>
+                  <div className="nutricion__resumen-item">
+                    <div className="nutricion__resumen-valor nutricion__resumen-valor--info">
                       {totalDia.proteinas}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Proteínas
-                    </div>
+                    <div className="nutricion__resumen-label">Proteínas</div>
                   </div>
-                  <div
-                    style={{
-                      background: "#f7fafc",
-                      padding: "8px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: "bold", color: "#ed8936" }}>
+                  <div className="nutricion__resumen-item">
+                    <div className="nutricion__resumen-valor nutricion__resumen-valor--warning">
                       {totalDia.carbohidratos}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Carbs
-                    </div>
+                    <div className="nutricion__resumen-label">Carbs</div>
                   </div>
-                  <div
-                    style={{
-                      background: "#f7fafc",
-                      padding: "8px",
-                      borderRadius: "8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: "bold", color: "#ed8936" }}>
+                  <div className="nutricion__resumen-item">
+                    <div className="nutricion__resumen-valor nutricion__resumen-valor--warning">
                       {totalDia.grasas}g
                     </div>
-                    <div style={{ fontSize: "11px", color: "#718096" }}>
-                      Grasas
-                    </div>
+                    <div className="nutricion__resumen-label">Grasas</div>
                   </div>
                 </div>
               </div>
