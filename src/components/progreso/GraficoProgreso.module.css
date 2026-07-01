@@ -1,0 +1,25 @@
+.grafico-progreso {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.grafico-progreso__titulo {
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.grafico-progreso__contenedor {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.grafico-progreso__vacio {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}

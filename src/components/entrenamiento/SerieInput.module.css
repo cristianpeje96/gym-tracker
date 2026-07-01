@@ -1,0 +1,32 @@
+.serie-input {
+  background: var(--bg-surface);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm);
+}
+
+.serie-input__numero {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+.serie-input__campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: var(--spacing-sm);
+}
+
+.serie-input__campo {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  text-align: center;
+}
+
+.serie-input__campo:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}

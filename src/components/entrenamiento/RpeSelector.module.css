@@ -1,0 +1,27 @@
+.rpe-selector {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.rpe-selector__boton {
+  flex: 1;
+  padding: 8px 4px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rpe-selector__boton:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.rpe-selector__boton--activo {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}

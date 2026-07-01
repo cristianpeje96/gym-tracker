@@ -1,0 +1,112 @@
+.plan-semanal {
+  padding-bottom: var(--spacing-xl);
+}
+
+.plan-semanal__header {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.plan-semanal__titulo {
+  font-size: 24px;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.plan-semanal__subtitulo {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.plan-semanal__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.plan-semanal__dia {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.plan-semanal__dia--hoy {
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.plan-semanal__dia-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan-semanal__dia-nombre {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.plan-semanal__hoy-badge {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.plan-semanal__dia-contenido {
+  padding: var(--spacing-md);
+}
+
+.plan-semanal__grupo {
+  margin-bottom: var(--spacing-sm);
+  font-size: 14px;
+  color: var(--color-primary);
+}
+
+.plan-semanal__ejercicios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.plan-semanal__ejercicio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.plan-semanal__ejercicio-nombre {
+  color: var(--text-primary);
+}
+
+.plan-semanal__ejercicio-detalle {
+  color: var(--text-secondary);
+  font-size: 12px;
+  background: var(--bg-surface);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-sm);
+}
+
+.plan-semanal__mas {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
+  border-top: 1px dashed #e2e8f0;
+}
+
+.plan-semanal__descanso {
+  text-align: center;
+  color: var(--color-success);
+  padding: var(--spacing-md);
+}

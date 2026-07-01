@@ -1,0 +1,119 @@
+.progreso {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
+}
+
+.progreso__card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.progreso__titulo {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.progreso__subtitulo {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.progreso__selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.progreso__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.progreso__select {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  background: white;
+}
+
+.progreso__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.progreso__stat {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.progreso__stat-valor {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.progreso__stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.progreso__subtitulo-card {
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.progreso__tabla {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.progreso__tabla-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  padding: var(--spacing-sm);
+  background: var(--bg-primary);
+  color: white;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.progreso__tabla-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  padding: var(--spacing-sm);
+  background: var(--bg-surface);
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+}
+
+.progreso__vacio {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.progreso__vacio-icono {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.progreso__vacio-texto {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}

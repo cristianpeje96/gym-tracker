@@ -1,0 +1,156 @@
+.perfil {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
+}
+
+.perfil__mensaje {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+.perfil__mensaje--exito {
+  background: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.perfil__mensaje--error {
+  background: #fed7d7;
+  color: #742a2a;
+  border: 1px solid #fc8181;
+}
+
+.perfil__card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.perfil__card-titulo {
+  font-size: 18px;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  border-left: 4px solid var(--color-primary);
+  padding-left: var(--spacing-md);
+}
+
+.perfil__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.perfil__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.perfil__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.perfil__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.perfil__input,
+.perfil__select {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  transition: all var(--transition-fast);
+}
+
+.perfil__input:focus,
+.perfil__select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.perfil__imc {
+  background: var(--bg-surface);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.perfil__imc-valor {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.perfil__imc-clasificacion {
+  font-size: 14px;
+  margin-top: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.perfil__imc-clasificacion--normal {
+  color: var(--color-success);
+}
+
+.perfil__imc-clasificacion--bajo-peso {
+  color: var(--color-warning);
+}
+
+.perfil__imc-clasificacion--sobrepeso {
+  color: var(--color-warning);
+}
+
+.perfil__imc-clasificacion--obesidad {
+  color: var(--color-danger);
+}
+
+.perfil__btn {
+  background: var(--bg-primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-top: var(--spacing-sm);
+}
+
+.perfil__btn:active {
+  transform: scale(0.98);
+}
+
+.perfil__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .perfil__form-row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
