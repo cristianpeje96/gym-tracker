@@ -1,14 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { db } from "../firebase/firebase";
-import {
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  arrayUnion,
-} from "firebase/firestore";
 import { useAuth } from "../hooks/useAuth";
+import { entrenamientoService } from "../services/entrenamientoService";
 
 const EntrenamientoContext = createContext();
 
@@ -22,16 +14,17 @@ export const EntrenamientoProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       cargarHistorial();
+    } else {
+      setCargando(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const cargarHistorial = async () => {
+    setCargando(true);
     try {
-      const historialRef = doc(db, "historial", user.uid);
-      const historialDoc = await getDoc(historialRef);
-      if (historialDoc.exists()) {
-        setHistorial(historialDoc.data().sesiones || []);
-      }
+      const sesiones = await entrenamientoService.obtenerHistorial(user.uid);
+      setHistorial(sesiones);
     } catch (error) {
       console.error("Error cargando historial:", error);
     } finally {
@@ -40,22 +33,15 @@ export const EntrenamientoProvider = ({ children }) => {
   };
 
   const guardarSesion = async (sesion) => {
-    try {
-      const historialRef = doc(db, "historial", user.uid);
-      await setDoc(
-        historialRef,
-        {
-          sesiones: arrayUnion(sesion),
-        },
-        { merge: true },
-      );
-
+    if (!user) return false;
+    const resultado = await entrenamientoService.guardarSesion(
+      user.uid,
+      sesion,
+    );
+    if (resultado.success) {
       setHistorial((prev) => [...prev, sesion]);
-      return true;
-    } catch (error) {
-      console.error("Error guardando sesión:", error);
-      return false;
     }
+    return resultado.success;
   };
 
   return (
@@ -64,6 +50,7 @@ export const EntrenamientoProvider = ({ children }) => {
         historial,
         cargando,
         guardarSesion,
+        recargar: cargarHistorial,
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 .tabla-rpe {
-  background: var(--bg-card);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-sm);
@@ -11,14 +12,15 @@
 }
 
 .tabla-rpe__titulo {
-  font-size: 18px;
-  color: var(--color-primary);
+  font-size: 16px;
+  color: var(--color-ink);
   margin-bottom: var(--spacing-xs);
 }
 
 .tabla-rpe__subtitulo {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-transform: none;
 }
 
 .tabla-rpe__grid {
@@ -29,11 +31,11 @@
 }
 
 .tabla-rpe__item {
-  background: var(--bg-surface);
+  background: var(--color-paper);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-md);
   transition: all var(--transition-fast);
-  cursor: pointer;
+  cursor: default;
 }
 
 .tabla-rpe__item:hover {
@@ -49,39 +51,41 @@
 }
 
 .tabla-rpe__rpe {
-  font-weight: bold;
-  font-size: 16px;
-  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-iron);
 }
 
 .tabla-rpe__rir {
-  font-size: 12px;
-  color: var(--text-secondary);
-  background: white;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  background: var(--color-surface);
   padding: 2px 8px;
   border-radius: var(--border-radius-sm);
 }
 
 .tabla-rpe__significado {
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-weight: 600;
+  color: var(--color-ink);
   margin-bottom: var(--spacing-xs);
 }
 
 .tabla-rpe__descripcion {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--color-ink-soft);
 }
 
 .tabla-rpe__footer {
   margin-top: var(--spacing-lg);
   padding-top: var(--spacing-md);
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-border);
 }
 
 .tabla-rpe__nota {
   font-size: 13px;
-  color: var(--text-secondary);
+  color: var(--color-ink-soft);
   line-height: 1.5;
 }

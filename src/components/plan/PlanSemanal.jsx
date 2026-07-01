@@ -3,7 +3,7 @@ import {
   PLAN_ENTRENAMIENTO,
   DIAS_SEMANA,
 } from "../../constants/planEntrenamiento";
-import "./PlanSemanal.module.css";
+import "./PlanSemanal.css";
 
 export const PlanSemanal = () => {
   const hoy = DIAS_SEMANA[new Date().getDay()];

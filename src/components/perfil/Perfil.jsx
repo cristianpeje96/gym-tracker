@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { TablaRpe } from "./TablaRpe";
-import "./Perfil.module.css";
+import "./Perfil.css";
 
 export const Perfil = () => {
   const { user } = useAuth();

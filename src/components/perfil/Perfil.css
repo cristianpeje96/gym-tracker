@@ -1,0 +1,145 @@
+.perfil {
+  padding: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.perfil__mensaje {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.perfil__mensaje--exito {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.perfil__mensaje--error {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.perfil__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.perfil__card-titulo {
+  font-size: 16px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-ink);
+}
+
+.perfil__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.perfil__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.perfil__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.perfil__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-soft);
+}
+
+.perfil__input,
+.perfil__select {
+  padding: 12px;
+  border-radius: var(--border-radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transition: border-color var(--transition-fast);
+}
+
+.perfil__input:focus,
+.perfil__select:focus {
+  outline: none;
+  border-color: var(--color-iron);
+}
+
+.perfil__imc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-paper);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+}
+
+.perfil__imc-valor {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.perfil__imc-clasificacion {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-sm);
+  background: var(--color-info-soft);
+  color: var(--color-info);
+}
+
+.perfil__imc-clasificacion--normal {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.perfil__imc-clasificacion--sobrepeso,
+.perfil__imc-clasificacion--bajo-peso {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.perfil__imc-clasificacion--obesidad {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.perfil__btn {
+  padding: 14px;
+  background: var(--color-iron);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.perfil__btn:hover:not(:disabled) {
+  background: var(--color-iron-dark);
+}
+
+.perfil__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

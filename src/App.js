@@ -1,76 +1,38 @@
-import React, { useState, useEffect } from "react";
-import {
-  auth,
-  onAuthStateChanged,
-  iniciarSesionAnonima,
-} from "./firebase/firebase";
+import React, { useState } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
+import { EntrenamientoProvider } from "./contexts/EntrenamientoContext";
+import { useAuth } from "./hooks/useAuth";
+import { NavTabs } from "./components/common/NavTabs/NavTabs";
+import { Dashboard } from "./components/dashboard/Dashboard";
 import { Entrenamiento } from "./components/entrenamiento/Entrenamiento";
 import { HistorialCompleto } from "./components/historial/HistorialCompleto";
+import { PlanSemanal } from "./components/plan/PlanSemanal";
 import { ControlNutricional } from "./components/nutricion/ControlNutricional";
+import { Perfil } from "./components/perfil/Perfil";
 import "./App.css";
 
-function App() {
-  const [vista, setVista] = useState("entrenar");
-  const [firebaseReady, setFirebaseReady] = useState(false);
-  const [user, setUser] = useState(null);
+const TABS = [
+  { id: "dashboard", label: "Resumen" },
+  { id: "entrenar", label: "Entrenar" },
+  { id: "historial", label: "Historial" },
+  { id: "plan", label: "Plan" },
+  { id: "nutricion", label: "Nutrición" },
+  { id: "perfil", label: "Perfil" },
+];
 
-  useEffect(() => {
-    const initAuth = async () => {
-      if (!auth) {
-        console.warn("⚠️ Firebase no disponible");
-        setFirebaseReady(true);
-        return;
-      }
+function AppContent() {
+  const { user, loading } = useAuth();
+  const [vista, setVista] = useState("dashboard");
 
-      // Escuchar cambios en autenticación
-      const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          console.log("✅ Usuario autenticado:", user.uid);
-          setUser(user);
-          setFirebaseReady(true);
-        } else {
-          console.log("🔄 Intentando autenticación anónima...");
-          // Intentar autenticación anónima
-          const newUser = await iniciarSesionAnonima();
-          if (newUser) {
-            setUser(newUser);
-          } else {
-            console.warn("⚠️ No se pudo autenticar");
-          }
-          setFirebaseReady(true);
-        }
-      });
-
-      return () => {
-        if (unsubscribe) unsubscribe();
-      };
-    };
-
-    initAuth();
-  }, []);
-
-  if (!firebaseReady) {
+  if (loading) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        }}
-      >
-        <div
-          style={{
-            background: "white",
-            padding: "40px",
-            borderRadius: "20px",
-            textAlign: "center",
-          }}
-        >
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>🔄</div>
+      <div className="app-loading">
+        <div className="app-loading__card">
+          <div className="app-loading__icono">⏳</div>
           <h2>Conectando con Firebase...</h2>
-          <p style={{ color: "#718096" }}>Inicializando autenticación</p>
+          <p style={{ color: "var(--color-ink-soft)" }}>
+            Inicializando autenticación
+          </p>
         </div>
       </div>
     );
@@ -79,42 +41,36 @@ function App() {
   return (
     <div className="App">
       <header className="app-header">
-        <h1>🏋️ Mi Gym Tracker</h1>
-        <p>{user ? "✅ Sincronizado en la nube" : "📱 Modo local"}</p>
-        {user && (
-          <p style={{ fontSize: "10px", opacity: 0.7 }}>
-            ID: {user.uid?.slice(0, 8)}...
-          </p>
-        )}
+        <h1 className="app-header__titulo">
+          IRON<span>LOG</span>
+        </h1>
+        <p className="app-header__estado">
+          {user ? "SINCRONIZADO EN LA NUBE" : "MODO LOCAL — SIN CONEXIÓN"}
+        </p>
+        {user && <p className="app-header__uid">ID {user.uid?.slice(0, 8)}…</p>}
       </header>
 
-      <div className="nav-tabs">
-        <button
-          onClick={() => setVista("entrenar")}
-          className={vista === "entrenar" ? "active" : ""}
-        >
-          💪 Entrenar
-        </button>
-        <button
-          onClick={() => setVista("historial")}
-          className={vista === "historial" ? "active" : ""}
-        >
-          📊 Historial
-        </button>
-        <button
-          onClick={() => setVista("nutricion")}
-          className={vista === "nutricion" ? "active" : ""}
-        >
-          🥗 Nutrición
-        </button>
-      </div>
-
       <main>
+        {vista === "dashboard" && <Dashboard />}
         {vista === "entrenar" && <Entrenamiento />}
         {vista === "historial" && <HistorialCompleto />}
+        {vista === "plan" && <PlanSemanal />}
         {vista === "nutricion" && <ControlNutricional />}
+        {vista === "perfil" && <Perfil />}
       </main>
+
+      <NavTabs tabs={TABS} activo={vista} onChange={setVista} />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <EntrenamientoProvider>
+        <AppContent />
+      </EntrenamientoProvider>
+    </AuthProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./TablaRpe.module.css";
+import "./TablaRpe.css";
 
 export const TablaRpe = () => {
   const escalaRpe = [
@@ -7,55 +7,13 @@ export const TablaRpe = () => {
       rpe: 10,
       significado: "Esfuerzo Máximo",
       rir: 0,
-      descripcion: "MIERDA, MIERDA, MIERDA",
+      descripcion: "No queda nada en el tanque",
     },
     {
       rpe: 9.5,
       significado: "Puede que salga 1 rep más",
       rir: "1-0",
-      descripcion: "AHHHH, CTM!",
-    },
-    {
-      rpe: 9,
-      significado: "Seguro que sale 1 rep más",
-      rir: 1,
-      descripcion: "Esfuerzo cerca del máximo",
-    },
-    {
-      rpe: 8.5,
-      significado: "Sale 1 rep más y puede que 2",
-      rir: "1-2",
-      descripcion: "Podría haber hecho 1 o 2 reps más",
-    },
-    {
-      rpe: 8,
-      significado: "Seguro que salen 2 reps más",
-      rir: 2,
-      descripcion: "Esfuerzo duro",
-    },
-    {
-      rpe: 7.5,
-      significado: "Salen 2 reps más y puede que 3",
-      rir: "2-3",
-      descripcion: "Podría haber hecho 3 o 4 reps más",
-    },
-    {
-      rpe: 7,
-      significado: "Salen 3 reps más",
-      rir: 3,
-      descripcion: "Esfuerzo moderado",
-    },
-    {
-      rpe: 6,
-      significado: "Salen 4 reps más",
-      rir: 4,
-      descripcion: "Esfuerzo medio duro",
-    },
-    {
-      rpe: 5,
-      significado: "Salen 5 reps más",
-      rir: 5,
-      descripcion: "Esfuerzo ligero",
+      descripcion: "Al límite absoluto",
     },
   ];
 

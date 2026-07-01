@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RpeSelector } from "./RpeSelector";
-import "./SerieInput.module.css";
+import "./SerieInput.css";
 
 export const SerieInput = ({
   numero,

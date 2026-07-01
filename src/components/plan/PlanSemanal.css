@@ -1,4 +1,5 @@
 .plan-semanal {
+  padding: var(--spacing-md);
   padding-bottom: var(--spacing-xl);
 }
 
@@ -8,14 +9,15 @@
 }
 
 .plan-semanal__titulo {
-  font-size: 24px;
-  color: var(--color-primary);
+  font-size: 22px;
+  color: var(--color-ink);
   margin-bottom: var(--spacing-xs);
 }
 
 .plan-semanal__subtitulo {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-transform: none;
 }
 
 .plan-semanal__grid {
@@ -25,7 +27,8 @@
 }
 
 .plan-semanal__dia {
-  background: var(--bg-card);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -33,30 +36,38 @@
 }
 
 .plan-semanal__dia--hoy {
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-iron);
   box-shadow: var(--shadow-md);
 }
 
 .plan-semanal__dia-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--color-ink);
+  color: #fff;
   padding: var(--spacing-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.plan-semanal__dia--hoy .plan-semanal__dia-header {
+  background: var(--color-iron);
+}
+
 .plan-semanal__dia-nombre {
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .plan-semanal__hoy-badge {
-  background: rgba(255, 255, 255, 0.3);
-  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 3px 9px;
   border-radius: var(--border-radius-sm);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .plan-semanal__dia-contenido {
@@ -66,7 +77,7 @@
 .plan-semanal__grupo {
   margin-bottom: var(--spacing-sm);
   font-size: 14px;
-  color: var(--color-primary);
+  color: var(--color-iron);
 }
 
 .plan-semanal__ejercicios {
@@ -81,17 +92,18 @@
   align-items: center;
   padding: var(--spacing-xs) 0;
   font-size: 14px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .plan-semanal__ejercicio-nombre {
-  color: var(--text-primary);
+  color: var(--color-ink);
 }
 
 .plan-semanal__ejercicio-detalle {
-  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  color: var(--color-ink-soft);
   font-size: 12px;
-  background: var(--bg-surface);
+  background: var(--color-paper);
   padding: 2px 8px;
   border-radius: var(--border-radius-sm);
 }
@@ -99,14 +111,15 @@
 .plan-semanal__mas {
   text-align: center;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--color-ink-soft);
   margin-top: var(--spacing-xs);
   padding-top: var(--spacing-xs);
-  border-top: 1px dashed #e2e8f0;
+  border-top: 1px dashed var(--color-border);
 }
 
 .plan-semanal__descanso {
   text-align: center;
   color: var(--color-success);
   padding: var(--spacing-md);
+  font-weight: 600;
 }
