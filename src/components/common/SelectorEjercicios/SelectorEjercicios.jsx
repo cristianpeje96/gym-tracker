@@ -111,42 +111,47 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
                 ✕
               </button>
             </div>
-            <h3 className="selector-ejercicios__titulo-confirmar">
-              {ejercicioElegido.nombre}
-            </h3>
-            <div className="selector-ejercicios__campos-confirmar">
-              <label className="selector-ejercicios__campo">
-                <span>Series</span>
-                <input
-                  type="number"
-                  value={series}
-                  onChange={(e) => setSeries(parseInt(e.target.value) || 0)}
-                />
-              </label>
-              <label className="selector-ejercicios__campo">
-                <span>Reps</span>
-                <input
-                  type="number"
-                  value={reps}
-                  onChange={(e) => setReps(parseInt(e.target.value) || 0)}
-                />
-              </label>
-              <label className="selector-ejercicios__campo">
-                <span>Kg iniciales</span>
-                <input
-                  type="number"
-                  step="2.5"
-                  value={carga}
-                  onChange={(e) => setCarga(parseFloat(e.target.value) || 0)}
-                />
-              </label>
+            <div className="selector-ejercicios__paso2">
+              <h3 className="selector-ejercicios__titulo-confirmar">
+                {ejercicioElegido.nombre}
+              </h3>
+              <div className="selector-ejercicios__campos-confirmar">
+                <label className="selector-ejercicios__campo">
+                  <span>Series</span>
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    value={series}
+                    onChange={(e) => setSeries(parseInt(e.target.value) || 0)}
+                  />
+                </label>
+                <label className="selector-ejercicios__campo">
+                  <span>Reps</span>
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    value={reps}
+                    onChange={(e) => setReps(parseInt(e.target.value) || 0)}
+                  />
+                </label>
+                <label className="selector-ejercicios__campo">
+                  <span>Kg iniciales</span>
+                  <input
+                    type="number"
+                    inputMode="decimal"
+                    step="2.5"
+                    value={carga}
+                    onChange={(e) => setCarga(parseFloat(e.target.value) || 0)}
+                  />
+                </label>
+              </div>
+              <button
+                className="selector-ejercicios__btn-confirmar"
+                onClick={handleConfirmarAgregar}
+              >
+                + Agregar a la rutina
+              </button>
             </div>
-            <button
-              className="selector-ejercicios__btn-confirmar"
-              onClick={handleConfirmarAgregar}
-            >
-              + Agregar a la rutina
-            </button>
           </>
         ) : (
           // ---- Paso 1: elegir de la lista ----

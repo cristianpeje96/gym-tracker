@@ -27,7 +27,8 @@
   padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   animation: selectorSlideUp 0.25s ease;
 }
 
@@ -203,6 +204,11 @@
   border: 1.5px solid var(--color-border);
   background: var(--color-paper);
 }
+.selector-ejercicios__paso2 {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
 
 .selector-ejercicios__titulo-confirmar {
   font-size: 20px;
@@ -213,7 +219,7 @@
 
 .selector-ejercicios__campos-confirmar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
 }
@@ -222,6 +228,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .selector-ejercicios__campo span {
@@ -234,7 +241,9 @@
 }
 
 .selector-ejercicios__campo input {
-  padding: 12px 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 6px;
   border-radius: var(--border-radius-sm);
   border: 1.5px solid var(--color-border);
   background: var(--color-paper);
