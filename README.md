@@ -199,3 +199,5 @@ cambia la identidad visual.
 - Esta app es una herramienta de **seguimiento**, no un sustituto de la
   asesoría de un entrenador o profesional de la salud calificado — se
   muestra un aviso al respecto en el Dashboard.
+
+### Desarrolladro: Cristian Peje
