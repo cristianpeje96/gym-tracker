@@ -33,9 +33,16 @@
 }
 
 .perfil__card-titulo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: 16px;
   margin-bottom: var(--spacing-md);
   color: var(--color-ink);
+}
+
+.perfil__card-titulo svg {
+  color: var(--color-acento);
 }
 
 .perfil__form {
@@ -46,7 +53,7 @@
 
 .perfil__form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-md);
 }
 
@@ -54,6 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  min-width: 0;
 }
 
 .perfil__label {
@@ -66,6 +74,8 @@
 
 .perfil__input,
 .perfil__select {
+  width: 100%;
+  min-width: 0;
   padding: 12px;
   border-radius: var(--border-radius-sm);
   border: 1.5px solid var(--color-border);
@@ -122,6 +132,10 @@
 }
 
 .perfil__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 14px;
   background: var(--color-iron);
   color: #fff;
@@ -129,8 +143,6 @@
   border-radius: var(--border-radius-sm);
   font-family: var(--font-display);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -142,4 +154,64 @@
 .perfil__btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.perfil__cuenta-texto {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-transform: none;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.perfil__btn--google {
+  background: #131314;
+}
+
+.perfil__btn--google:hover:not(:disabled) {
+  background: #000;
+}
+
+.perfil__btn--secundario {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-border);
+}
+
+.perfil__btn--secundario:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.perfil__cuenta-error {
+  color: var(--color-danger);
+  font-size: 12px;
+  margin-top: var(--spacing-sm);
+  text-transform: none;
+}
+
+.perfil__cuenta-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.perfil__cuenta-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-iron);
+}
+
+.perfil__cuenta-nombre {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: none;
+}
+
+.perfil__cuenta-email {
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  text-transform: none;
 }

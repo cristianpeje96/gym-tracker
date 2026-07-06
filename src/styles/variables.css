@@ -1,51 +1,63 @@
 /* ============================================
-   IRON & CHALK — sistema de diseño Gym Tracker
-   Identidad: gimnasio industrial. Placas de hierro,
-   tiza, cinta de seguridad. Tipografía condensada
-   para títulos, monoespaciada para datos (peso/reps).
+   TECH & PREMIUM — sistema de diseño Gym Tracker
+   Tema oscuro con acento morado eléctrico. Tipografía
+   geométrica en titulares (Plus Jakarta Sans) + Inter
+   para UI/cuerpo. Íconos Lucide (monolineales).
    ============================================ */
 :root {
-  /* Color — tinta y superficies (tema claro, cálido) */
-  --color-ink: #1c1b19;
-  --color-ink-soft: #6b6862;
-  --color-paper: #f6f3ee;
-  --color-surface: #ffffff;
-  --color-surface-sunken: #efece5;
-  --color-border: #e5e1d8;
+  /* Color — fondos y superficies */
+  --color-fondo: #0b0a0f;
+  --color-tarjeta: #16141f;
+  --color-tarjeta-elevada: #1e1c2a;
+  --color-borde: #2a2836;
 
-  /* Color — acentos (placa de hierro / cinta de seguridad) */
-  --color-iron: #e8491c;
-  --color-iron-dark: #c43813;
-  --color-iron-soft: #fce4da;
-  --color-plate: #f2b705;
-  --color-plate-soft: #fdf0c9;
+  /* Color — acentos */
+  --color-acento: #7c3aed;
+  --color-acento-dark: #6425d0;
+  --color-acento-soft: rgba(124, 58, 237, 0.16);
+  --color-lavanda: #a78bfa;
+  --color-lavanda-soft: rgba(167, 139, 250, 0.14);
 
-  /* Color — semánticos */
-  --color-success: #2f9e5b;
-  --color-success-soft: #dcf3e5;
-  --color-danger: #e23744;
-  --color-danger-soft: #fbdfe1;
-  --color-warning: #f2994a;
-  --color-warning-soft: #fdead9;
-  --color-info: #2f80ed;
-  --color-info-soft: #dfebfc;
+  /* Color — texto */
+  --color-texto: #ffffff;
+  --color-texto-secundario: #9ca3af;
 
-  /* Alias retrocompatibles (código existente los referencia) */
-  --color-primary: var(--color-iron);
-  --color-primary-dark: var(--color-iron-dark);
-  --color-secondary: var(--color-plate);
-  --bg-primary: var(--color-iron);
-  --bg-card: var(--color-surface);
-  --bg-surface: var(--color-paper);
-  --text-primary: var(--color-ink);
-  --text-secondary: var(--color-ink-soft);
+  /* Color — semánticos (versión translúcida para tema oscuro) */
+  --color-success: #34d399;
+  --color-success-soft: rgba(52, 211, 153, 0.14);
+  --color-danger: #f87171;
+  --color-danger-soft: rgba(248, 113, 113, 0.14);
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(251, 191, 36, 0.14);
+  --color-info: #60a5fa;
+  --color-info-soft: rgba(96, 165, 250, 0.14);
+
+  /* Alias retrocompatibles (todo el código existente usa estos nombres) */
+  --color-ink: var(--color-texto);
+  --color-ink-soft: var(--color-texto-secundario);
+  --color-paper: var(--color-fondo);
+  --color-surface: var(--color-tarjeta);
+  --color-surface-sunken: var(--color-tarjeta-elevada);
+  --color-border: var(--color-borde);
+  --color-iron: var(--color-acento);
+  --color-iron-dark: var(--color-acento-dark);
+  --color-iron-soft: var(--color-acento-soft);
+  --color-plate: var(--color-lavanda);
+  --color-plate-soft: var(--color-lavanda-soft);
+  --color-primary: var(--color-acento);
+  --color-primary-dark: var(--color-acento-dark);
+  --color-secondary: var(--color-lavanda);
+  --bg-primary: var(--color-acento);
+  --bg-card: var(--color-tarjeta);
+  --bg-surface: var(--color-fondo);
+  --text-primary: var(--color-texto);
+  --text-secondary: var(--color-texto-secundario);
   --text-light: #ffffff;
 
-  /* Tipografía */
-  --font-display: "Oswald", "Arial Narrow", sans-serif;
-  --font-body:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", "Roboto Mono", ui-monospace, monospace;
+  /* Tipografía — combinación "Tech & Premium" */
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Inter", ui-monospace, monospace;
 
   /* Espaciado */
   --spacing-xs: 4px;
@@ -59,12 +71,16 @@
   --border-radius-md: 14px;
   --border-radius-lg: 22px;
 
-  /* Sombras (cálidas, no grises puras) */
-  --shadow-sm: 0 1px 3px rgba(28, 27, 25, 0.08);
-  --shadow-md: 0 6px 16px rgba(28, 27, 25, 0.1);
-  --shadow-lg: 0 14px 30px rgba(28, 27, 25, 0.14);
+  /* Sombras (para tema oscuro, más profundas y con tinte morado sutil) */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(124, 58, 237, 0.25);
 
   /* Transiciones */
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
+
+  /* Íconos: grosor de trazo estándar para lucide-react */
+  --icon-stroke: 1.75;
 }

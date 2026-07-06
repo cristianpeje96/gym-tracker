@@ -3,13 +3,27 @@ import { useAuth } from "../../hooks/useAuth";
 import { useEntrenamiento } from "../../contexts/EntrenamientoContext";
 import { planService } from "../../services/planService";
 import { getDiaActual } from "../../utils/helpers";
+import { detectarNuevosPRs } from "../../utils/gamificacion";
 import { SerieInput } from "./SerieInput";
 import { SelectorEjercicios } from "../common/SelectorEjercicios/SelectorEjercicios";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  XCircle,
+  Trophy,
+  PartyPopper,
+  Target,
+  Plus,
+  Save,
+  Loader2,
+  WifiOff,
+  Wifi,
+} from "lucide-react";
 import "./Entrenamiento.css";
 
 export const Entrenamiento = () => {
   const { user } = useAuth();
-  const { guardarSesion } = useEntrenamiento();
+  const { guardarSesion, historial } = useEntrenamiento();
   const [plan, setPlan] = useState(null);
   const [sesionActual, setSesionActual] = useState({});
   const [ejerciciosExtra, setEjerciciosExtra] = useState([]);
@@ -17,6 +31,8 @@ export const Entrenamiento = () => {
   const [mensaje, setMensaje] = useState(null);
   const [selectorAbierto, setSelectorAbierto] = useState(false);
 
+  // Bug corregido: antes estaba fijo en "Lunes" para pruebas.
+  // Ahora usa el día real de la semana.
   const hoy = getDiaActual();
 
   const cargarPlan = useCallback(async () => {
@@ -51,7 +67,8 @@ export const Entrenamiento = () => {
     if (!user) {
       setMensaje({
         tipo: "error",
-        texto: "⚠️ No estás autenticado. Conectando...",
+        icono: AlertTriangle,
+        texto: "No estás autenticado. Conectando...",
       });
       return;
     }
@@ -63,7 +80,8 @@ export const Entrenamiento = () => {
     if (seriesCompletadas === 0) {
       setMensaje({
         tipo: "error",
-        texto: "⚠️ Debes registrar al menos una serie",
+        icono: AlertTriangle,
+        texto: "Debes registrar al menos una serie",
       });
       setTimeout(() => setMensaje(null), 3000);
       return;
@@ -79,20 +97,39 @@ export const Entrenamiento = () => {
     };
 
     const exito = await guardarSesion(sesion);
+    let huboPR = false;
 
     if (exito) {
-      setMensaje({
-        tipo: "exito",
-        texto: `✅ ¡Sesión guardada! ${seriesCompletadas} series completadas`,
-      });
+      const nuevosPRs = detectarNuevosPRs(sesion, historial);
+      huboPR = nuevosPRs.length > 0;
+      if (huboPR) {
+        const detalle = nuevosPRs
+          .map((pr) => `${pr.nombre} (${pr.carga}kg)`)
+          .join(", ");
+        setMensaje({
+          tipo: "exito",
+          icono: Trophy,
+          texto: `¡Nuevo récord! ${detalle}`,
+        });
+      } else {
+        setMensaje({
+          tipo: "exito",
+          icono: CheckCircle2,
+          texto: `¡Sesión guardada! ${seriesCompletadas} series completadas`,
+        });
+      }
       setSesionActual({});
       setEjerciciosExtra([]);
     } else {
-      setMensaje({ tipo: "error", texto: "❌ Error al guardar la sesión" });
+      setMensaje({
+        tipo: "error",
+        icono: XCircle,
+        texto: "Error al guardar la sesión",
+      });
     }
 
     setGuardando(false);
-    setTimeout(() => setMensaje(null), 3000);
+    setTimeout(() => setMensaje(null), huboPR ? 5000 : 3000);
   };
 
   const esDiaDescanso = !planHoy || ejerciciosMostrados.length === 0;
@@ -103,6 +140,7 @@ export const Entrenamiento = () => {
         <div
           className={`entrenamiento__mensaje entrenamiento__mensaje--${mensaje.tipo}`}
         >
+          <mensaje.icono size={16} strokeWidth={1.75} />
           {mensaje.texto}
         </div>
       )}
@@ -115,17 +153,29 @@ export const Entrenamiento = () => {
         <p
           className={`entrenamiento__estado ${user ? "entrenamiento__estado--ok" : "entrenamiento__estado--error"}`}
         >
-          {user ? "✅ Conectado a Firebase" : "❌ Sin conexión a Firebase"}
+          {user ? (
+            <>
+              <Wifi size={13} strokeWidth={2} /> Conectado a Firebase
+            </>
+          ) : (
+            <>
+              <WifiOff size={13} strokeWidth={2} /> Sin conexión a Firebase
+            </>
+          )}
         </p>
       </div>
 
       {esDiaDescanso && (
         <div className="entrenamiento__descanso">
-          <div className="entrenamiento__descanso-icono">🎉</div>
+          <PartyPopper
+            size={48}
+            strokeWidth={1.5}
+            className="entrenamiento__descanso-icono"
+          />
           <h3>¡Día de descanso!</h3>
           <p>
-            Recupera tus músculos y vuelve más fuerte mañana 💪. Si tu
-            instructor te dejó algo para hoy, agrégalo abajo.
+            Recupera tus músculos y vuelve más fuerte mañana. Si tu instructor
+            te dejó algo para hoy, agrégalo abajo.
           </p>
         </div>
       )}
@@ -136,7 +186,8 @@ export const Entrenamiento = () => {
             {ejercicio.nombre}
           </h4>
           <p className="entrenamiento__ejercicio-objetivo">
-            🎯 {ejercicio.series} × {ejercicio.reps}{" "}
+            <Target size={14} strokeWidth={1.75} /> {ejercicio.series} ×{" "}
+            {ejercicio.reps}{" "}
             {ejercicio.carga > 0
               ? `(${ejercicio.carga} kg)`
               : "(peso corporal)"}
@@ -160,7 +211,7 @@ export const Entrenamiento = () => {
         className="entrenamiento__btn-agregar-ejercicio"
         onClick={() => setSelectorAbierto(true)}
       >
-        + Agregar ejercicio
+        <Plus size={16} strokeWidth={2} /> Agregar ejercicio
       </button>
 
       {!esDiaDescanso && (
@@ -169,11 +220,21 @@ export const Entrenamiento = () => {
           onClick={handleGuardarSesion}
           disabled={guardando || !user}
         >
-          {!user
-            ? "🔄 Conectando..."
-            : guardando
-              ? "💾 Guardando..."
-              : "💾 Guardar sesión"}
+          {!user ? (
+            <>
+              <Loader2 size={18} strokeWidth={2} className="icono-spin" />{" "}
+              Conectando...
+            </>
+          ) : guardando ? (
+            <>
+              <Loader2 size={18} strokeWidth={2} className="icono-spin" />{" "}
+              Guardando...
+            </>
+          ) : (
+            <>
+              <Save size={18} strokeWidth={2} /> Guardar sesión
+            </>
+          )}
         </button>
       )}
 

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
 @import "./styles/variables.css";
 
 * {
@@ -21,9 +21,9 @@ h3,
 h4,
 h5 {
   font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 code {
@@ -40,6 +40,7 @@ select,
 textarea {
   font-family: inherit;
   font-size: 16px;
+  color: var(--color-ink);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -50,6 +51,21 @@ input[type="number"]::-webkit-outer-spin-button {
 :focus-visible {
   outline: 2px solid var(--color-iron);
   outline-offset: 2px;
+}
+
+/* Utilidad global para íconos de carga (Loader2 de lucide-react, etc.) */
+.icono-spin {
+  display: inline-flex;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

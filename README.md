@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Cómo correr el proyecto
 
-## Available Scripts
+### 1. Instalar dependencias
+```bash
+npm install
+```
 
-In the project directory, you can run:
+### 2. Configurar Firebase
+Este proyecto **no trae credenciales en el código** (por seguridad, están
+en un archivo ignorado por git).
 
-### `npm start`
+```bash
+cp .env.example .env.local
+```
+Completa `.env.local` con los datos de tu proyecto en
+**Firebase Console → Configuración del proyecto → Tus apps → Config del SDK**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En **Firebase Console → Authentication → Sign-in method**, habilita:
+- **Anónimo** (necesario para el modo invitado)
+- **Google** (necesario para vincular cuenta desde Perfil)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Si `.env.local` falta o está incompleto, la app lo detecta y muestra en
+pantalla los pasos exactos para corregirlo (no falla en silencio).
 
-### `npm test`
+### 3. Levantar el servidor de desarrollo
+```bash
+npm start
+```
+Abre [http://localhost:3000](http://localhost:3000).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Build de producción
+```bash
+npm run build
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎨 Sistema de diseño
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Todos los colores, tipografías y espaciados viven como variables CSS en
+`src/styles/variables.css` — cambiar un valor ahí se propaga a toda la
+app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Token                      | Valor     | Uso                                                  |
+| -------------------------- | --------- | ---------------------------------------------------- |
+| `--color-fondo`            | `#0b0a0f` | Fondo general de la app                              |
+| `--color-tarjeta`          | `#16141f` | Tarjetas, inputs, menús                              |
+| `--color-acento`           | `#7c3aed` | Botones de acción, íconos activos, bordes destacados |
+| `--color-lavanda`          | `#a78bfa` | Texto secundario importante, estados activos tenues  |
+| `--color-texto`            | `#ffffff` | Texto principal                                      |
+| `--color-texto-secundario` | `#9ca3af` | Descripciones, fechas                                |
 
-### `npm run eject`
+Existen alias retrocompatibles (`--color-ink`, `--color-iron`, etc.) para
+que el código de componentes no tenga que renombrarse cada vez que
+cambia la identidad visual.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔐 Notas de seguridad
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Las credenciales de Firebase viven en `.env.local`, que está en
+  `.gitignore` y nunca se sube al repositorio. `.env.example` es la
+  plantilla pública (sin valores).
+- La API key de Firebase para apps web es pública por diseño (viaja al
+  navegador); la protección real son las **restricciones configuradas en
+  Google Cloud Console** (APIs permitidas + dominios autorizados) y las
+  **reglas de seguridad de Firestore**.
+- El login con Google usa `linkWithPopup` para conservar el mismo UID (y
+  por lo tanto el historial) al pasar de invitado a cuenta registrada.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📌 Estado conocido / pendientes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `src/components/progreso/Progreso.jsx` y `src/components/api/RecomendacionesIA.jsx`
+  existen en el repo pero **no están conectados** a la navegación
+  principal (código en pausa para una futura iteración).
+- El plan de entrenamiento por defecto está **vacío a propósito**: cada
+  usuario debe cargar la rutina que le indique su instructor desde la
+  pestaña "Plan", no viene con ejercicios de ejemplo precargados.
+- Esta app es una herramienta de **seguimiento**, no un sustituto de la
+  asesoría de un entrenador o profesional de la salud calificado — se
+  muestra un aviso al respecto en el Dashboard.

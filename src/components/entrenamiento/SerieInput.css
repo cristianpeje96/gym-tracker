@@ -38,16 +38,19 @@
 
 .serie-input__campos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-sm);
 }
 
 .serie-input__campo {
+  min-width: 0;
+  width: 100%;
   padding: 10px;
   border-radius: var(--border-radius-sm);
   border: 1.5px solid var(--color-border);
   background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-mono);
   text-align: center;
   transition: border-color var(--transition-fast);

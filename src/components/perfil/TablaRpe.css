@@ -12,9 +12,18 @@
 }
 
 .tabla-rpe__titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   font-size: 16px;
   color: var(--color-ink);
   margin-bottom: var(--spacing-xs);
+}
+
+.tabla-rpe__titulo svg {
+  color: var(--color-acento);
+  flex-shrink: 0;
 }
 
 .tabla-rpe__subtitulo {
@@ -85,7 +94,16 @@
 }
 
 .tabla-rpe__nota {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   font-size: 13px;
   color: var(--color-ink-soft);
   line-height: 1.5;
+}
+
+.tabla-rpe__nota svg {
+  color: var(--color-warning);
+  flex-shrink: 0;
+  margin-top: 2px;
 }

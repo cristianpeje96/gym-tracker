@@ -12,6 +12,7 @@ import {
   ComposedChart,
   Area,
 } from "recharts";
+import { Inbox, MousePointerClick } from "lucide-react";
 import "./GraficoProgresoAvanzado.css";
 
 export const GraficoProgresoAvanzado = ({
@@ -83,22 +84,29 @@ export const GraficoProgresoAvanzado = ({
           <div className="grafico-avanzado__grafico">
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={datos}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
-                <XAxis dataKey="fecha" stroke="#6b6862" fontSize={11} />
-                <YAxis yAxisId="left" stroke="#6b6862" fontSize={11} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a2836" />
+                <XAxis dataKey="fecha" stroke="#9ca3af" fontSize={11} />
+                <YAxis yAxisId="left" stroke="#9ca3af" fontSize={11} />
                 <YAxis
                   yAxisId="right"
                   orientation="right"
-                  stroke="#6b6862"
+                  stroke="#9ca3af"
                   fontSize={11}
                 />
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    background: "#16141f",
+                    border: "1px solid #2a2836",
+                    borderRadius: 8,
+                    color: "#fff",
+                  }}
+                />
                 <Legend />
                 <Line
                   yAxisId="left"
                   type="monotone"
                   dataKey="carga"
-                  stroke="#e8491c"
+                  stroke="#7c3aed"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   name="Carga (kg)"
@@ -107,7 +115,7 @@ export const GraficoProgresoAvanzado = ({
                   yAxisId="right"
                   type="monotone"
                   dataKey="rpe"
-                  stroke="#f2b705"
+                  stroke="#a78bfa"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   name="RPE"
@@ -119,17 +127,24 @@ export const GraficoProgresoAvanzado = ({
           <div>
             <ResponsiveContainer width="100%" height={200}>
               <ComposedChart data={datos}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
-                <XAxis dataKey="fecha" stroke="#6b6862" fontSize={11} />
-                <YAxis stroke="#6b6862" fontSize={11} />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a2836" />
+                <XAxis dataKey="fecha" stroke="#9ca3af" fontSize={11} />
+                <YAxis stroke="#9ca3af" fontSize={11} />
+                <Tooltip
+                  contentStyle={{
+                    background: "#16141f",
+                    border: "1px solid #2a2836",
+                    borderRadius: 8,
+                    color: "#fff",
+                  }}
+                />
                 <Legend />
-                <Bar dataKey="volumen" fill="#e8491c" name="Volumen total" />
+                <Bar dataKey="volumen" fill="#7c3aed" name="Volumen total" />
                 <Area
                   type="monotone"
                   dataKey="carga"
-                  fill="#f2b70555"
-                  stroke="#f2b705"
+                  fill="#a78bfa33"
+                  stroke="#a78bfa"
                   name="Carga media"
                 />
               </ComposedChart>
@@ -165,9 +180,17 @@ export const GraficoProgresoAvanzado = ({
         </div>
       ) : (
         <div className="grafico-avanzado__vacio">
-          {ejercicioSeleccionado
-            ? "📭 Aún no hay datos de este ejercicio"
-            : "👆 Selecciona un ejercicio para ver tu progreso"}
+          {ejercicioSeleccionado ? (
+            <>
+              <Inbox size={22} strokeWidth={1.5} />
+              <span>Aún no hay datos de este ejercicio</span>
+            </>
+          ) : (
+            <>
+              <MousePointerClick size={22} strokeWidth={1.5} />
+              <span>Selecciona un ejercicio para ver tu progreso</span>
+            </>
+          )}
         </div>
       )}
     </div>

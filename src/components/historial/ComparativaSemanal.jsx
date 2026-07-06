@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { BarChart3, Dumbbell, Gauge, Calendar } from "lucide-react";
 import "./ComparativaSemanal.css";
 
 export const ComparativaSemanal = ({ historial }) => {
@@ -81,7 +82,8 @@ export const ComparativaSemanal = ({ historial }) => {
   if (datos.length === 0) {
     return (
       <div className="comparativa__vacio">
-        📊 Aún no hay suficientes datos para comparar semanas
+        <BarChart3 size={22} strokeWidth={1.5} />
+        <span>Aún no hay suficientes datos para comparar semanas</span>
       </div>
     );
   }
@@ -104,22 +106,29 @@ export const ComparativaSemanal = ({ historial }) => {
       <div className="comparativa__grafico">
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e1d8" />
-            <XAxis dataKey="semana" stroke="#6b6862" fontSize={12} />
-            <YAxis yAxisId="left" stroke="#6b6862" fontSize={12} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#2a2836" />
+            <XAxis dataKey="semana" stroke="#9ca3af" fontSize={12} />
+            <YAxis yAxisId="left" stroke="#9ca3af" fontSize={12} />
             <YAxis
               yAxisId="right"
               orientation="right"
-              stroke="#6b6862"
+              stroke="#9ca3af"
               fontSize={12}
             />
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                background: "#16141f",
+                border: "1px solid #2a2836",
+                borderRadius: 8,
+                color: "#fff",
+              }}
+            />
             <Legend />
             <Line
               yAxisId="left"
               type="monotone"
               dataKey="volumen"
-              stroke="#e8491c"
+              stroke="#7c3aed"
               strokeWidth={2}
               dot={{ r: 4 }}
               name="Volumen (kg)"
@@ -128,7 +137,7 @@ export const ComparativaSemanal = ({ historial }) => {
               yAxisId="right"
               type="monotone"
               dataKey="rpe"
-              stroke="#f2b705"
+              stroke="#a78bfa"
               strokeWidth={2}
               dot={{ r: 4 }}
               name="RPE medio"
@@ -142,9 +151,15 @@ export const ComparativaSemanal = ({ historial }) => {
           <div key={idx} className="comparativa__card">
             <div className="comparativa__card-semana">{d.semana}</div>
             <div className="comparativa__card-datos">
-              <div>🏋️ {d.volumen}k</div>
-              <div>📊 {d.rpe}</div>
-              <div>📅 {d.sesiones} ses</div>
+              <div>
+                <Dumbbell size={13} strokeWidth={1.75} /> {d.volumen}k
+              </div>
+              <div>
+                <Gauge size={13} strokeWidth={1.75} /> {d.rpe}
+              </div>
+              <div>
+                <Calendar size={13} strokeWidth={1.75} /> {d.sesiones} ses
+              </div>
             </div>
           </div>
         ))}

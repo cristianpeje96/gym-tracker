@@ -6,11 +6,22 @@
 }
 
 .historial__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: var(--spacing-md);
   font-size: 20px;
 }
 
+.historial__titulo svg {
+  color: var(--color-acento);
+}
+
 .historial__cargando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   text-align: center;
   padding: 40px;
   background: var(--color-surface);
@@ -26,6 +37,9 @@
 }
 
 .historial__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   padding: 9px 16px;
   background: var(--color-surface);
   color: var(--color-ink-soft);
@@ -53,6 +67,9 @@
 }
 
 .historial__subtitulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: var(--spacing-sm);
   font-size: 14px;
 }
@@ -86,9 +103,13 @@
 }
 
 .historial__resumen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin-top: var(--spacing-md);
   padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--color-ink);
+  background: var(--color-tarjeta-elevada);
   color: #fff;
   border-radius: var(--border-radius-sm);
   font-family: var(--font-mono);

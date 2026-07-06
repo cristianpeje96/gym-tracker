@@ -3,6 +3,19 @@ import { useAuth } from "../../hooks/useAuth";
 import { entrenamientoService } from "../../services/entrenamientoService";
 import { nutricionService } from "../../services/nutricionService";
 import { obtenerRecomendaciones } from "../../utils/calculosNutricionales";
+import {
+  Salad,
+  Loader2,
+  FileText,
+  Target,
+  TrendingDown,
+  Scale,
+  TrendingUp,
+  Lightbulb,
+  Utensils,
+  Plus,
+  BarChart3,
+} from "lucide-react";
 import "./ControlNutricional.css";
 
 export const ControlNutricional = () => {
@@ -105,20 +118,23 @@ export const ControlNutricional = () => {
   if (!user || cargando) {
     return (
       <div className="nutricion__cargando">
-        <p>🔄 Conectando a la nube...</p>
+        <Loader2 size={20} strokeWidth={2} className="icono-spin" />
+        <p>Conectando a la nube...</p>
       </div>
     );
   }
 
   return (
     <div className="nutricion">
-      <h2 className="nutricion__titulo">🥗 Control Nutricional</h2>
+      <h2 className="nutricion__titulo">
+        <Salad size={20} strokeWidth={1.75} /> Control Nutricional
+      </h2>
 
       {!perfil ? (
         <div className="nutricion__card nutricion__card--centrada">
-          <p>
-            📝 Completa tu perfil primero para obtener recomendaciones
-            personalizadas
+          <p className="nutricion__card-mensaje">
+            <FileText size={16} strokeWidth={1.75} /> Completa tu perfil primero
+            para obtener recomendaciones personalizadas
           </p>
           <p className="nutricion__nota">
             Ve a la sección de Perfil para ingresar tus datos
@@ -127,13 +143,16 @@ export const ControlNutricional = () => {
       ) : (
         <>
           <div className="nutricion__card">
-            <h4>🎯 Objetivo</h4>
+            <h4 className="nutricion__card-titulo">
+              <Target size={16} strokeWidth={1.75} /> Objetivo
+            </h4>
             <div className="nutricion__objetivos">
               <button
                 onClick={() => setObjetivo("deficit")}
                 className={`nutricion__objetivo-btn ${objetivo === "deficit" ? "nutricion__objetivo-btn--deficit" : ""}`}
               >
-                📉 Déficit
+                <TrendingDown size={18} strokeWidth={1.75} />
+                Déficit
                 <br />
                 <small>Perder peso</small>
               </button>
@@ -141,7 +160,8 @@ export const ControlNutricional = () => {
                 onClick={() => setObjetivo("mantenimiento")}
                 className={`nutricion__objetivo-btn ${objetivo === "mantenimiento" ? "nutricion__objetivo-btn--mantenimiento" : ""}`}
               >
-                ⚖️ Mantener
+                <Scale size={18} strokeWidth={1.75} />
+                Mantener
                 <br />
                 <small>Peso actual</small>
               </button>
@@ -149,7 +169,8 @@ export const ControlNutricional = () => {
                 onClick={() => setObjetivo("superavit")}
                 className={`nutricion__objetivo-btn ${objetivo === "superavit" ? "nutricion__objetivo-btn--superavit" : ""}`}
               >
-                📈 Superávit
+                <TrendingUp size={18} strokeWidth={1.75} />
+                Superávit
                 <br />
                 <small>Ganar músculo</small>
               </button>
@@ -158,7 +179,10 @@ export const ControlNutricional = () => {
 
           {recomendaciones && (
             <div className="nutricion__card">
-              <h4>📊 Recomendaciones Personalizadas</h4>
+              <h4 className="nutricion__card-titulo">
+                <BarChart3 size={16} strokeWidth={1.75} /> Recomendaciones
+                Personalizadas
+              </h4>
               <div className="nutricion__grid-2">
                 <div className="nutricion__mini-card">
                   <div className="nutricion__mini-label">Calorías diarias</div>
@@ -199,7 +223,9 @@ export const ControlNutricional = () => {
               </div>
 
               <div className="nutricion__consejos">
-                <h5 className="nutricion__subtitulo">💡 Consejos</h5>
+                <h5 className="nutricion__subtitulo">
+                  <Lightbulb size={14} strokeWidth={1.75} /> Consejos
+                </h5>
                 <ul className="nutricion__lista-consejos">
                   {recomendaciones.consejos.map((consejo, idx) => (
                     <li key={idx}>{consejo}</li>
@@ -210,7 +236,9 @@ export const ControlNutricional = () => {
           )}
 
           <div className="nutricion__card">
-            <h4>⚖️ Registrar Peso</h4>
+            <h4 className="nutricion__card-titulo">
+              <Scale size={16} strokeWidth={1.75} /> Registrar Peso
+            </h4>
             <div className="nutricion__registro-peso">
               <input
                 type="number"
@@ -245,7 +273,9 @@ export const ControlNutricional = () => {
           </div>
 
           <div className="nutricion__card">
-            <h4>🍽️ Registrar Comida</h4>
+            <h4 className="nutricion__card-titulo">
+              <Utensils size={16} strokeWidth={1.75} /> Registrar Comida
+            </h4>
             <form
               onSubmit={handleRegistrarComida}
               className="nutricion__form-comida"
@@ -288,7 +318,7 @@ export const ControlNutricional = () => {
                 />
               </div>
               <button type="submit" className="nutricion__btn-agregar">
-                + Agregar Comida
+                <Plus size={16} strokeWidth={2} /> Agregar Comida
               </button>
             </form>
 
@@ -296,7 +326,9 @@ export const ControlNutricional = () => {
               (c) => c.fecha === new Date().toISOString().split("T")[0],
             ).length > 0 && (
               <div className="nutricion__resumen-dia">
-                <h5 className="nutricion__subtitulo">📊 Resumen del día</h5>
+                <h5 className="nutricion__subtitulo">
+                  <BarChart3 size={14} strokeWidth={1.75} /> Resumen del día
+                </h5>
                 <div className="nutricion__grid-4">
                   <div className="nutricion__resumen-item">
                     <div className="nutricion__resumen-valor">

@@ -3,10 +3,18 @@ import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { TablaRpe } from "./TablaRpe";
+import { ShieldCheck, Link2, User, Save, Ruler, Loader2 } from "lucide-react";
 import "./Perfil.css";
 
 export const Perfil = () => {
-  const { user } = useAuth();
+  const {
+    user,
+    esInvitado,
+    errorAuth,
+    vinculando,
+    iniciarSesionConGoogle,
+    cerrarSesion,
+  } = useAuth();
   const [perfil, setPerfil] = useState({
     altura: "",
     peso: "",
@@ -94,10 +102,10 @@ export const Perfil = () => {
     try {
       const userRef = doc(db, "usuarios", user.uid);
       await setDoc(userRef, { perfil }, { merge: true });
-      setMensaje({ tipo: "exito", texto: "✅ Perfil guardado correctamente" });
+      setMensaje({ tipo: "exito", texto: "Perfil guardado correctamente" });
       setTimeout(() => setMensaje(null), 3000);
     } catch (error) {
-      setMensaje({ tipo: "error", texto: "❌ Error al guardar el perfil" });
+      setMensaje({ tipo: "error", texto: "Error al guardar el perfil" });
       console.error(error);
     } finally {
       setCargando(false);
@@ -113,15 +121,19 @@ export const Perfil = () => {
       await setDoc(userRef, { medidas }, { merge: true });
       setMensaje({
         tipo: "exito",
-        texto: "✅ Medidas guardadas correctamente",
+        texto: "Medidas guardadas correctamente",
       });
       setTimeout(() => setMensaje(null), 3000);
     } catch (error) {
-      setMensaje({ tipo: "error", texto: "❌ Error al guardar las medidas" });
+      setMensaje({ tipo: "error", texto: "Error al guardar las medidas" });
       console.error(error);
     } finally {
       setCargando(false);
     }
+  };
+
+  const handleIniciarSesionGoogle = () => {
+    iniciarSesionConGoogle();
   };
 
   return (
@@ -133,7 +145,65 @@ export const Perfil = () => {
       )}
 
       <div className="perfil__card">
-        <h3 className="perfil__card-titulo">👤 Datos personales</h3>
+        <h3 className="perfil__card-titulo">
+          <ShieldCheck size={17} strokeWidth={1.75} /> Cuenta
+        </h3>
+        {esInvitado ? (
+          <>
+            <p className="perfil__cuenta-texto">
+              Estás usando la app como invitado. Tu progreso vive solo en este
+              dispositivo — si lo desinstalas o cambias de celular, lo pierdes.
+            </p>
+            <button
+              className="perfil__btn perfil__btn--google"
+              onClick={handleIniciarSesionGoogle}
+              disabled={vinculando}
+            >
+              {vinculando ? (
+                <>
+                  <Loader2 size={16} strokeWidth={2} className="icono-spin" />{" "}
+                  Conectando...
+                </>
+              ) : (
+                <>
+                  <Link2 size={16} strokeWidth={1.75} /> Iniciar sesión con
+                  Google (no pierdes tu progreso)
+                </>
+              )}
+            </button>
+            {errorAuth && <p className="perfil__cuenta-error">{errorAuth}</p>}
+          </>
+        ) : (
+          <>
+            <div className="perfil__cuenta-info">
+              {user?.photoURL && (
+                <img
+                  src={user.photoURL}
+                  alt=""
+                  className="perfil__cuenta-avatar"
+                />
+              )}
+              <div>
+                <div className="perfil__cuenta-nombre">
+                  {user?.displayName || "Cuenta conectada"}
+                </div>
+                <div className="perfil__cuenta-email">{user?.email}</div>
+              </div>
+            </div>
+            <button
+              className="perfil__btn perfil__btn--secundario"
+              onClick={cerrarSesion}
+            >
+              Cerrar sesión
+            </button>
+          </>
+        )}
+      </div>
+
+      <div className="perfil__card">
+        <h3 className="perfil__card-titulo">
+          <User size={17} strokeWidth={1.75} /> Datos personales
+        </h3>
         <form onSubmit={guardarPerfil} className="perfil__form">
           <div className="perfil__form-group">
             <label className="perfil__label">Altura (cm)</label>
@@ -211,13 +281,24 @@ export const Perfil = () => {
           )}
 
           <button type="submit" className="perfil__btn" disabled={cargando}>
-            {cargando ? "Guardando..." : "💾 Guardar perfil"}
+            {cargando ? (
+              <>
+                <Loader2 size={16} strokeWidth={2} className="icono-spin" />{" "}
+                Guardando...
+              </>
+            ) : (
+              <>
+                <Save size={16} strokeWidth={1.75} /> Guardar perfil
+              </>
+            )}
           </button>
         </form>
       </div>
 
       <div className="perfil__card">
-        <h3 className="perfil__card-titulo">📏 Medidas corporales (cm)</h3>
+        <h3 className="perfil__card-titulo">
+          <Ruler size={17} strokeWidth={1.75} /> Medidas corporales (cm)
+        </h3>
         <form onSubmit={guardarMedidas} className="perfil__form">
           <div className="perfil__form-row">
             <div className="perfil__form-group">
@@ -317,7 +398,16 @@ export const Perfil = () => {
           </div>
 
           <button type="submit" className="perfil__btn" disabled={cargando}>
-            {cargando ? "Guardando..." : "📏 Guardar medidas"}
+            {cargando ? (
+              <>
+                <Loader2 size={16} strokeWidth={2} className="icono-spin" />{" "}
+                Guardando...
+              </>
+            ) : (
+              <>
+                <Ruler size={16} strokeWidth={1.75} /> Guardar medidas
+              </>
+            )}
           </button>
         </form>
       </div>

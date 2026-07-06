@@ -6,14 +6,41 @@
 }
 
 .nutricion__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: var(--spacing-md);
   font-size: 20px;
 }
 
+.nutricion__titulo svg {
+  color: var(--color-acento);
+}
+
 .nutricion__cargando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   padding: var(--spacing-md);
   text-align: center;
   color: var(--color-ink-soft);
+}
+
+.nutricion__card-titulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.nutricion__card-mensaje {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  text-transform: none;
 }
 
 .nutricion__card {
@@ -38,12 +65,18 @@
 
 .nutricion__objetivos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
+  min-width: 0;
 }
 
 .nutricion__objetivo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
   padding: var(--spacing-md) var(--spacing-sm);
   background: var(--color-paper);
   color: var(--color-ink-soft);
@@ -74,20 +107,20 @@
 
 .nutricion__grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-sm);
   margin-top: var(--spacing-sm);
 }
 
 .nutricion__grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-sm);
 }
 
 .nutricion__grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--spacing-sm);
 }
 
@@ -119,6 +152,9 @@
 }
 
 .nutricion__subtitulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13px;
   margin-bottom: var(--spacing-sm);
   text-transform: none;
@@ -181,10 +217,13 @@
 
 .nutricion__input {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   padding: 10px;
   border-radius: var(--border-radius-sm);
   border: 1.5px solid var(--color-border);
   background: var(--color-paper);
+  color: var(--color-ink);
 }
 
 .nutricion__btn-primario {
@@ -226,6 +265,10 @@
 }
 
 .nutricion__btn-agregar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin-top: var(--spacing-md);
   padding: 12px 20px;
   background: var(--color-success);
@@ -234,7 +277,6 @@
   border-radius: var(--border-radius-sm);
   font-family: var(--font-display);
   font-weight: 600;
-  text-transform: uppercase;
   cursor: pointer;
   width: 100%;
 }

@@ -5,6 +5,7 @@ import {
   GRUPOS_MUSCULARES,
   EJERCICIOS_PREDEFINIDOS,
 } from "../../../constants/ejerciciosLibrary";
+import { ArrowLeft, X, Plus, SearchX } from "lucide-react";
 import "./SelectorEjercicios.css";
 
 /**
@@ -102,13 +103,13 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
                 className="selector-ejercicios__volver"
                 onClick={() => setEjercicioElegido(null)}
               >
-                ← Volver
+                <ArrowLeft size={15} strokeWidth={2} /> Volver
               </button>
               <button
                 className="selector-ejercicios__cerrar"
                 onClick={onCerrar}
               >
-                ✕
+                <X size={16} strokeWidth={2} />
               </button>
             </div>
             <div className="selector-ejercicios__paso2">
@@ -149,7 +150,7 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
                 className="selector-ejercicios__btn-confirmar"
                 onClick={handleConfirmarAgregar}
               >
-                + Agregar a la rutina
+                <Plus size={16} strokeWidth={2} /> Agregar a la rutina
               </button>
             </div>
           </>
@@ -162,7 +163,7 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
                 className="selector-ejercicios__cerrar"
                 onClick={onCerrar}
               >
-                ✕
+                <X size={16} strokeWidth={2} />
               </button>
             </div>
 
@@ -195,7 +196,8 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
             <div className="selector-ejercicios__lista">
               {ejerciciosFiltrados.length === 0 ? (
                 <p className="selector-ejercicios__vacio">
-                  No se encontraron ejercicios
+                  <SearchX size={22} strokeWidth={1.5} />
+                  <span>No se encontraron ejercicios</span>
                 </p>
               ) : (
                 ejerciciosFiltrados.map((ej, idx) => (
@@ -248,7 +250,8 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
                   className="selector-ejercicios__btn-propio"
                   onClick={() => setMostrarFormPropio(true)}
                 >
-                  + No está en la lista, agregar el mío
+                  <Plus size={15} strokeWidth={2} /> No está en la lista,
+                  agregar el mío
                 </button>
               )}
             </div>

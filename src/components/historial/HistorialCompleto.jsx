@@ -3,6 +3,13 @@ import { useAuth } from "../../hooks/useAuth";
 import { useEntrenamiento } from "../../contexts/EntrenamientoContext";
 import { GraficoProgresoAvanzado } from "./GraficoProgresoAvanzado";
 import { ComparativaSemanal } from "./ComparativaSemanal";
+import {
+  BarChart3,
+  TrendingUp,
+  GitCompareArrows,
+  ClipboardList,
+  Loader2,
+} from "lucide-react";
 import "./HistorialCompleto.css";
 
 export const HistorialCompleto = () => {
@@ -23,11 +30,14 @@ export const HistorialCompleto = () => {
 
   return (
     <div className="historial">
-      <h2 className="historial__titulo">📊 Historial y Progreso</h2>
+      <h2 className="historial__titulo">
+        <BarChart3 size={20} strokeWidth={1.75} /> Historial y Progreso
+      </h2>
 
       {!user || cargando ? (
         <div className="historial__cargando">
-          <p>🔄 Conectando a la nube...</p>
+          <Loader2 size={20} strokeWidth={2} className="icono-spin" />
+          <p>Conectando a la nube...</p>
         </div>
       ) : (
         <>
@@ -36,19 +46,19 @@ export const HistorialCompleto = () => {
               className={`historial__tab ${vista === "progreso" ? "historial__tab--activo" : ""}`}
               onClick={() => setVista("progreso")}
             >
-              📈 Progreso
+              <TrendingUp size={15} strokeWidth={1.75} /> Progreso
             </button>
             <button
               className={`historial__tab ${vista === "comparativa" ? "historial__tab--activo" : ""}`}
               onClick={() => setVista("comparativa")}
             >
-              📊 Comparativa
+              <GitCompareArrows size={15} strokeWidth={1.75} /> Comparativa
             </button>
             <button
               className={`historial__tab ${vista === "lista" ? "historial__tab--activo" : ""}`}
               onClick={() => setVista("lista")}
             >
-              📋 Historial
+              <ClipboardList size={15} strokeWidth={1.75} /> Historial
             </button>
           </div>
 
@@ -68,7 +78,10 @@ export const HistorialCompleto = () => {
 
             {vista === "lista" && (
               <div>
-                <h4 className="historial__subtitulo">📋 Últimas sesiones</h4>
+                <h4 className="historial__subtitulo">
+                  <ClipboardList size={16} strokeWidth={1.75} /> Últimas
+                  sesiones
+                </h4>
                 {historial.length === 0 ? (
                   <p className="historial__vacio">
                     Aún no hay sesiones guardadas
@@ -111,7 +124,8 @@ export const HistorialCompleto = () => {
           </div>
 
           <div className="historial__resumen">
-            📊 Total sesiones: {historial.length}
+            <BarChart3 size={14} strokeWidth={1.75} /> Total sesiones:{" "}
+            {historial.length}
           </div>
         </>
       )}

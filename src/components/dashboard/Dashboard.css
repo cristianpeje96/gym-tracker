@@ -14,26 +14,33 @@
 }
 
 .dashboard__titulo {
-  color: var(--color-ink);
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-texto-secundario);
+  font-size: 13px;
+  font-weight: 600;
   margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 3px solid var(--color-iron);
-  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dashboard__titulo svg {
+  color: var(--color-acento);
 }
 
 .dashboard__dia {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  color: var(--color-iron);
+  color: var(--color-texto);
   margin-bottom: var(--spacing-xs);
-  text-transform: uppercase;
 }
 
 .dashboard__nombre {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
+  color: var(--color-lavanda);
   margin-bottom: var(--spacing-sm);
   text-transform: none;
 }
@@ -44,6 +51,10 @@
 }
 
 .dashboard__descanso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
   padding: var(--spacing-lg);
   color: var(--color-success);
@@ -53,7 +64,7 @@
 
 .dashboard__stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-md);
   text-align: center;
 }
@@ -90,5 +101,115 @@
 
 .dashboard__ejercicios {
   text-transform: none;
+  font-size: 14px;
+}
+.dashboard__aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-info-soft);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+}
+
+.dashboard__aviso-icono {
+  color: var(--color-info);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dashboard__aviso p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.dashboard__aviso p strong {
+  color: var(--color-texto);
+}
+.dashboard__racha-card {
+  background: linear-gradient(
+    135deg,
+    var(--color-tarjeta-elevada),
+    var(--color-tarjeta)
+  );
+  border: 1px solid var(--color-acento-soft);
+  box-shadow: var(--shadow-glow);
+  color: #fff;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.dashboard__racha-icono {
+  color: var(--color-acento);
+  flex-shrink: 0;
+}
+
+.dashboard__racha-numero {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-plate);
+  line-height: 1;
+}
+
+.dashboard__racha-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+.dashboard__semana-barra-fondo {
+  width: 100%;
+  height: 10px;
+  background: var(--color-surface-sunken);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dashboard__semana-barra {
+  height: 100%;
+  background: var(--color-iron);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.dashboard__semana-texto {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  text-transform: none;
+}
+
+.dashboard__records {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboard__record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-paper);
+  padding: 10px var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+}
+
+.dashboard__record-nombre {
+  font-size: 13px;
+  color: var(--color-ink);
+}
+
+.dashboard__record-valor {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-iron);
   font-size: 14px;
 }

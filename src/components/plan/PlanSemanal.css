@@ -9,9 +9,17 @@
 }
 
 .plan-semanal__titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-size: 22px;
   color: var(--color-ink);
   margin-bottom: var(--spacing-xs);
+}
+
+.plan-semanal__titulo svg {
+  color: var(--color-acento);
 }
 
 .plan-semanal__subtitulo {
@@ -41,7 +49,7 @@
 }
 
 .plan-semanal__dia-header {
-  background: var(--color-ink);
+  background: var(--color-tarjeta-elevada);
   color: #fff;
   padding: var(--spacing-md);
   display: flex;
@@ -118,12 +126,21 @@
 }
 
 .plan-semanal__descanso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
   color: var(--color-success);
   padding: var(--spacing-md);
   font-weight: 600;
 }
+
 .plan-semanal__cargando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
   padding: 40px;
   color: var(--color-ink-soft);
@@ -144,7 +161,7 @@
 }
 
 .plan-semanal__chevron {
-  font-size: 10px;
+  display: flex;
   opacity: 0.8;
 }
 
@@ -170,6 +187,10 @@
 }
 
 .plan-semanal__btn-agregar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   width: 100%;
   margin-top: var(--spacing-sm);
   padding: 11px;

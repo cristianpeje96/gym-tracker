@@ -3,6 +3,15 @@ import { useAuth } from "../../hooks/useAuth";
 import { planService } from "../../services/planService";
 import { DIAS_SEMANA } from "../../constants/planEntrenamiento";
 import { SelectorEjercicios } from "../common/SelectorEjercicios/SelectorEjercicios";
+import {
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  X,
+  Plus,
+  PartyPopper,
+  Loader2,
+} from "lucide-react";
 import "./PlanSemanal.css";
 
 export const PlanSemanal = () => {
@@ -48,7 +57,10 @@ export const PlanSemanal = () => {
   if (!plan) {
     return (
       <div className="plan-semanal">
-        <p className="plan-semanal__cargando">🔄 Cargando tu plan...</p>
+        <p className="plan-semanal__cargando">
+          <Loader2 size={18} strokeWidth={2} className="icono-spin" />
+          Cargando tu plan...
+        </p>
       </div>
     );
   }
@@ -57,7 +69,8 @@ export const PlanSemanal = () => {
     <div className="plan-semanal">
       <div className="plan-semanal__header">
         <h2 className="plan-semanal__titulo">
-          📅 Plan de entrenamiento semanal
+          <Calendar size={20} strokeWidth={1.75} /> Plan de entrenamiento
+          semanal
         </h2>
         <p className="plan-semanal__subtitulo">
           Toca un día para verlo completo y agregar ejercicios
@@ -82,7 +95,11 @@ export const PlanSemanal = () => {
                     <span className="plan-semanal__hoy-badge">HOY</span>
                   )}
                   <span className="plan-semanal__chevron">
-                    {expandido ? "▲" : "▼"}
+                    {expandido ? (
+                      <ChevronUp size={16} strokeWidth={2} />
+                    ) : (
+                      <ChevronDown size={16} strokeWidth={2} />
+                    )}
                   </span>
                 </div>
               </button>
@@ -109,7 +126,7 @@ export const PlanSemanal = () => {
                                 onClick={() => handleQuitarEjercicio(dia, idx)}
                                 aria-label="Quitar ejercicio"
                               >
-                                ×
+                                <X size={13} strokeWidth={2.5} />
                               </button>
                             </span>
                           </div>
@@ -118,7 +135,8 @@ export const PlanSemanal = () => {
                     </>
                   ) : (
                     <div className="plan-semanal__descanso">
-                      🎉 Día de descanso
+                      <PartyPopper size={16} strokeWidth={1.75} /> Sin
+                      ejercicios asignados todavía
                     </div>
                   )}
 
@@ -126,7 +144,8 @@ export const PlanSemanal = () => {
                     className="plan-semanal__btn-agregar"
                     onClick={() => setDiaParaAgregar(dia)}
                   >
-                    + Agregar ejercicio a este día
+                    <Plus size={14} strokeWidth={2} /> Agregar ejercicio a este
+                    día
                   </button>
                 </div>
               )}
