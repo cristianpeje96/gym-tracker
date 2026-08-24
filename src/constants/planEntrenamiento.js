@@ -1,16 +1,18 @@
 // Plan de entrenamiento por defecto: vacío a propósito.
 // Cada usuario arma su propia rutina (la que le asigne su instructor)
-// desde la pestaña "Plan", usando el selector de ejercicios. No se
-// precargan ejercicios de ejemplo para evitar que alguien entrene algo
-// que no fue indicado por un profesional.
+// desde la pestaña "Plan", usando el selector de ejercicios.
+//
+// Los días se numeran (Día 1, Día 2...) en vez de usar días de la
+// semana, porque no todos entrenan en un horario fijo de lunes a
+// domingo — así cada quien sigue su rutina por el número de día que le
+// toca, sin importar qué día del calendario sea.
 export const PLAN_ENTRENAMIENTO = {
-  Lunes: { nombre: "", ejercicios: [] },
-  Martes: { nombre: "", ejercicios: [] },
-  Miércoles: { nombre: "", ejercicios: [] },
-  Jueves: { nombre: "", ejercicios: [] },
-  Viernes: { nombre: "", ejercicios: [] },
-  Sábado: { nombre: "", ejercicios: [] },
-  Domingo: { nombre: "", ejercicios: [] },
+  dias: [
+    { nombre: "", ejercicios: [] },
+    { nombre: "", ejercicios: [] },
+    { nombre: "", ejercicios: [] },
+  ],
+  diaActualIndice: 0,
 };
 
 export const DIAS_SEMANA = [

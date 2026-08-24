@@ -3,7 +3,17 @@ import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { TablaRpe } from "./TablaRpe";
-import { ShieldCheck, Link2, User, Save, Ruler, Loader2 } from "lucide-react";
+import { EvolucionFisica } from "./EvolucionFisica";
+import { medidasService } from "../../services/medidasService";
+import {
+  ShieldCheck,
+  Link2,
+  User,
+  Save,
+  Ruler,
+  Loader2,
+  LineChart,
+} from "lucide-react";
 import "./Perfil.css";
 
 export const Perfil = () => {
@@ -36,6 +46,7 @@ export const Perfil = () => {
   const [imc, setImc] = useState(null);
   const [cargando, setCargando] = useState(false);
   const [mensaje, setMensaje] = useState("");
+  const [refrescarEvolucion, setRefrescarEvolucion] = useState(0);
 
   useEffect(() => {
     if (user) {
@@ -119,6 +130,10 @@ export const Perfil = () => {
     try {
       const userRef = doc(db, "usuarios", user.uid);
       await setDoc(userRef, { medidas }, { merge: true });
+      // Además de guardar los valores actuales, agrega un registro fechado
+      // al historial para poder ver la evolución en el tiempo.
+      await medidasService.registrarMedidas(user.uid, medidas);
+      setRefrescarEvolucion((prev) => prev + 1);
       setMensaje({
         tipo: "exito",
         texto: "Medidas guardadas correctamente",
@@ -410,6 +425,13 @@ export const Perfil = () => {
             )}
           </button>
         </form>
+      </div>
+
+      <div className="perfil__card">
+        <h3 className="perfil__card-titulo">
+          <LineChart size={17} strokeWidth={1.75} /> Evolución física
+        </h3>
+        <EvolucionFisica refrescarKey={refrescarEvolucion} />
       </div>
 
       <TablaRpe />

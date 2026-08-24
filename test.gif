@@ -1,0 +1,1 @@
+{"error":"Monthly Quota Exceeded","message":"You have used 500/500 monthly requests.","quota":{"allowed":false,"used":500,"limit":500,"remaining":0,"resetDate":null},"upgrade":"https://workoutxapp.com/pricing"}

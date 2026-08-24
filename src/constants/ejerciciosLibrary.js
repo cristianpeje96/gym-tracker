@@ -90,3 +90,8 @@ export const EJERCICIOS_PREDEFINIDOS = [
   { nombre: "Remo (máquina cardio)", grupo: "cardio" },
   { nombre: "Cuerda / saltar la cuerda", grupo: "cardio" },
 ];
+// GIF de ejercicios.
+export const obtenerGifPorNombre = (nombre) => {
+  const ejercicio = EJERCICIOS_PREDEFINIDOS.find((ej) => ej.nombre === nombre);
+  return ejercicio?.gifUrl || null;
+};

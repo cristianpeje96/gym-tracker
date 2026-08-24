@@ -3,6 +3,49 @@
   padding-bottom: var(--spacing-xl);
 }
 
+.entrenamiento__selector-dias {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-lg);
+}
+
+.entrenamiento__dia-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.entrenamiento__dia-chip--activo {
+  background: var(--color-iron);
+  border-color: var(--color-iron);
+  color: #fff;
+}
+
+.entrenamiento__dia-chip-badge {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.entrenamiento__dia-chip:not(.entrenamiento__dia-chip--activo)
+  .entrenamiento__dia-chip-badge {
+  background: var(--color-acento-soft);
+  color: var(--color-acento);
+}
+
 .entrenamiento__mensaje {
   display: flex;
   align-items: center;
@@ -66,6 +109,47 @@
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-md);
   box-shadow: var(--shadow-sm);
+}
+
+.entrenamiento__ejercicio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.entrenamiento__ejercicio-header .entrenamiento__ejercicio-nombre {
+  margin-bottom: 0;
+}
+
+.entrenamiento__btn-ver-gif {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  background: var(--color-acento-soft);
+  border: none;
+  border-radius: 999px;
+  color: var(--color-acento);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.entrenamiento__btn-ver-gif:hover {
+  background: var(--color-iron-soft);
+}
+
+.entrenamiento__gif {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  background: var(--color-paper);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .entrenamiento__ejercicio-nombre {

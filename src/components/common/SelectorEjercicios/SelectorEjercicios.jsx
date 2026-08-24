@@ -4,6 +4,7 @@ import { ejerciciosService } from "../../../services/ejerciciosService";
 import {
   GRUPOS_MUSCULARES,
   EJERCICIOS_PREDEFINIDOS,
+  obtenerGifPorNombre,
 } from "../../../constants/ejerciciosLibrary";
 import { ArrowLeft, X, Plus, SearchX } from "lucide-react";
 import "./SelectorEjercicios.css";
@@ -116,6 +117,14 @@ export const SelectorEjercicios = ({ abierto, onCerrar, onAgregar }) => {
               <h3 className="selector-ejercicios__titulo-confirmar">
                 {ejercicioElegido.nombre}
               </h3>
+              {obtenerGifPorNombre(ejercicioElegido.nombre) && (
+                <img
+                  src={obtenerGifPorNombre(ejercicioElegido.nombre)}
+                  alt={`Cómo hacer ${ejercicioElegido.nombre}`}
+                  className="selector-ejercicios__gif"
+                  loading="lazy"
+                />
+              )}
               <div className="selector-ejercicios__campos-confirmar">
                 <label className="selector-ejercicios__campo">
                   <span>Series</span>

@@ -99,7 +99,7 @@ export const detectarNuevosPRs = (sesionNueva, historialPrevio) => {
  * en la semana.
  */
 export const progresoSemana = (historial, plan) => {
-  const diasConPlan = Object.values(plan || {}).filter(
+  const diasConPlan = (plan?.dias || []).filter(
     (dia) => dia.ejercicios && dia.ejercicios.length > 0,
   ).length;
 

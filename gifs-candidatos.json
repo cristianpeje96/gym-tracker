@@ -1,0 +1,1671 @@
+{
+  "Press banca": [
+    {
+      "id": "0025",
+      "name": "Barbell Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0025.gif",
+      "score": 1
+    },
+    {
+      "id": "0033",
+      "name": "Barbell Decline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0033.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0045",
+      "name": "Barbell Guillotine Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0045.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0047",
+      "name": "Barbell Incline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0047.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0122",
+      "name": "Barbell Wide Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0122.gif",
+      "score": 0.75
+    }
+  ],
+  "Press banca mancuerna": [
+    {
+      "id": "0289",
+      "name": "Dumbbell Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0289.gif",
+      "score": 1
+    },
+    {
+      "id": "0301",
+      "name": "Dumbbell Decline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0301.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0314",
+      "name": "Dumbbell Incline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0314.gif",
+      "score": 0.75
+    },
+    {
+      "id": "1624",
+      "name": "Dumbbell Reverse Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1624.gif",
+      "score": 0.75
+    },
+    {
+      "id": "1254",
+      "name": "Band Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1254.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Press inclinado con barra": [
+    {
+      "id": "0047",
+      "name": "Barbell Incline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0047.gif",
+      "score": 1
+    },
+    {
+      "id": "0025",
+      "name": "Barbell Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0025.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0033",
+      "name": "Barbell Decline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0033.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0045",
+      "name": "Barbell Guillotine Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0045.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0122",
+      "name": "Barbell Wide Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0122.gif",
+      "score": 0.75
+    }
+  ],
+  "Press inclinado mancuerna": [
+    {
+      "id": "0314",
+      "name": "Dumbbell Incline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0314.gif",
+      "score": 1
+    },
+    {
+      "id": "0289",
+      "name": "Dumbbell Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0289.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0301",
+      "name": "Dumbbell Decline Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0301.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0321",
+      "name": "Dumbbell Incline Hammer Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0321.gif",
+      "score": 0.75
+    },
+    {
+      "id": "1624",
+      "name": "Dumbbell Reverse Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1624.gif",
+      "score": 0.75
+    }
+  ],
+  "Aperturas con mancuerna": [
+    {
+      "id": "0308",
+      "name": "Dumbbell Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0308.gif",
+      "score": 1
+    },
+    {
+      "id": "1277",
+      "name": "Dumbbell Fly On Exercise Ball",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1277.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3234",
+      "name": "Hyght Dumbbell Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3234.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0302",
+      "name": "Dumbbell Decline Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0302.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0319",
+      "name": "Dumbbell Incline Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0319.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Cruce de poleas": [
+    {
+      "id": "0151",
+      "name": "Cable Bench Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0151.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0158",
+      "name": "Cable Decline Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0158.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0171",
+      "name": "Cable Incline Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0171.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0179",
+      "name": "Cable Low Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0179.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0185",
+      "name": "Cable Lying Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0185.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Fondos en paralelas": [
+    {
+      "id": "0251",
+      "name": "Chest Dip",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0251.gif",
+      "score": 1
+    },
+    {
+      "id": "0009",
+      "name": "Assisted Chest Dip (kneeling)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0009.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1430",
+      "name": "Chest Dip (on Dip-pull-up Cage)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1430.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2363",
+      "name": "Wide-grip Chest Dip On High Parallel Bars",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2363.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2364",
+      "name": "Assisted Wide-grip Chest Dip (kneeling)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2364.gif",
+      "score": 0.95
+    }
+  ],
+  "Flexiones": [
+    {
+      "id": "0662",
+      "name": "Push-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0662.gif",
+      "score": 1
+    },
+    {
+      "id": "0258",
+      "name": "Clock Push-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0258.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0279",
+      "name": "Decline Push-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0279.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0492",
+      "name": "Incline Push Up Depth Jump",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0492.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0493",
+      "name": "Incline Push-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0493.gif",
+      "score": 0.95
+    }
+  ],
+  "Press en máquina": [
+    {
+      "id": "1301",
+      "name": "Machine Inner Chest Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1301.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0576",
+      "name": "Lever Chest Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0576.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0577",
+      "name": "Lever Chest Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0577.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "1299",
+      "name": "Lever Incline Chest Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1299.gif",
+      "score": 0.5
+    },
+    {
+      "id": "1300",
+      "name": "Lever Decline Chest Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1300.gif",
+      "score": 0.5
+    }
+  ],
+  "Dominadas": [
+    {
+      "id": "0652",
+      "name": "Pull-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0652.gif",
+      "score": 1
+    },
+    {
+      "id": "0015",
+      "name": "Assisted Parallel Close Grip Pull-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0015.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0017",
+      "name": "Assisted Pull-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0017.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0651",
+      "name": "Pull Up (neutral Grip)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0651.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0670",
+      "name": "Rear Pull-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0670.gif",
+      "score": 0.95
+    }
+  ],
+  "Jalón al pecho": [
+    {
+      "id": "0673",
+      "name": "Reverse Grip Machine Lat Pulldown",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0673.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0818",
+      "name": "Twin Handle Parallel Grip Lat Pulldown",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0818.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2330",
+      "name": "Cable Lat Pulldown Full Range Of Motion",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2330.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0198",
+      "name": "Cable Pulldown",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0198.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0197",
+      "name": "Cable Pulldown (pro Lat Bar)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0197.gif",
+      "score": 0.4
+    }
+  ],
+  "Remo con barra": [
+    {
+      "id": "0049",
+      "name": "Barbell Incline Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0049.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "3017",
+      "name": "Barbell Pendlay Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3017.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0027",
+      "name": "Barbell Bent Over Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0027.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0073",
+      "name": "Barbell Pullover",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0073.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0095",
+      "name": "Barbell Shrug",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0095.gif",
+      "score": 0.5
+    }
+  ],
+  "Remo máquina unilateral": [
+    {
+      "id": "1773",
+      "name": "One Arm Towel Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1773.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0589",
+      "name": "Lever One Arm Bent Over Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0589.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0988",
+      "name": "Band One Arm Standing Low Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0988.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0990",
+      "name": "Band One Arm Twisting Seated Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0990.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "1356",
+      "name": "Lever One Arm Lateral High Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1356.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Remo en polea baja": [
+    {
+      "id": "0861",
+      "name": "Cable Seated Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0861.gif",
+      "score": 1
+    },
+    {
+      "id": "0180",
+      "name": "Cable Low Seated Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0180.gif",
+      "score": 0.75
+    },
+    {
+      "id": "1323",
+      "name": "Cable Rope Seated Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1323.gif",
+      "score": 0.75
+    },
+    {
+      "id": "1324",
+      "name": "Cable Upper Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1324.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "1350",
+      "name": "Lever Seated Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1350.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Peso muerto": [
+    {
+      "id": "0073",
+      "name": "Barbell Pullover",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0073.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0095",
+      "name": "Barbell Shrug",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0095.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0049",
+      "name": "Barbell Incline Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0049.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "3017",
+      "name": "Barbell Pendlay Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3017.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0022",
+      "name": "Barbell Pullover To Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0022.gif",
+      "score": 0.25
+    }
+  ],
+  "Pull-over con mancuerna": [
+    {
+      "id": "0406",
+      "name": "Dumbbell Shrug",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0406.gif",
+      "score": 0.5
+    },
+    {
+      "id": "2285",
+      "name": "Lever Pullover",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2285.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0305",
+      "name": "Dumbbell Decline Shrug",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0305.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0327",
+      "name": "Dumbbell Incline Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0327.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0329",
+      "name": "Dumbbell Incline Shrug",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0329.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Hiperextensiones": [
+    {
+      "id": "0489",
+      "name": "Hyperextension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0489.gif",
+      "score": 1
+    },
+    {
+      "id": "0488",
+      "name": "Hyperextension (on Bench)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0488.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0835",
+      "name": "Weighted Hyperextension (on Stability Ball)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0835.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0007",
+      "name": "Alternate Lateral Pulldown",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0007.gif",
+      "score": 0
+    },
+    {
+      "id": "0015",
+      "name": "Assisted Parallel Close Grip Pull-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0015.gif",
+      "score": 0
+    }
+  ],
+  "Sentadilla libre": [
+    {
+      "id": "0102",
+      "name": "Barbell Squat (on Knees)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0102.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2798",
+      "name": "Barbell Squat Jump Step Rear Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2798.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0026",
+      "name": "Barbell Bench Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0026.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0042",
+      "name": "Barbell Front Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0042.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0043",
+      "name": "Barbell Full Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0043.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Sentadilla búlgara": [
+    {
+      "id": "0809",
+      "name": "Suspended Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0809.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0098",
+      "name": "Barbell Side Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0098.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0099",
+      "name": "Barbell Single Leg Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0099.gif",
+      "score": 0.4
+    },
+    {
+      "id": "0410",
+      "name": "Dumbbell Single Leg Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0410.gif",
+      "score": 0.4
+    },
+    {
+      "id": "0768",
+      "name": "Smith Single Leg Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0768.gif",
+      "score": 0.4
+    }
+  ],
+  "Prensa": [
+    {
+      "id": "0739",
+      "name": "Sled 45° Leg Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0739.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0760",
+      "name": "Smith Leg Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0760.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1425",
+      "name": "Sled 45 Degrees One Leg Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1425.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1463",
+      "name": "Sled 45° Leg Press (side Pov)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1463.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1464",
+      "name": "Sled 45° Leg Press (back Pov)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1464.gif",
+      "score": 0.95
+    }
+  ],
+  "Cuádriceps sentado": [
+    {
+      "id": "0585",
+      "name": "Lever Leg Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0585.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3007",
+      "name": "Resistance Band Leg Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3007.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0130",
+      "name": "Bench Hip Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0130.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0760",
+      "name": "Smith Leg Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0760.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "1476",
+      "name": "One Leg Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1476.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Zancadas": [
+    {
+      "id": "0054",
+      "name": "Barbell Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0054.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0077",
+      "name": "Barbell Rear Lunge V. 2",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0077.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0078",
+      "name": "Barbell Rear Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0078.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0336",
+      "name": "Dumbbell Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0336.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0381",
+      "name": "Dumbbell Rear Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0381.gif",
+      "score": 0.95
+    }
+  ],
+  "Step up": [
+    {
+      "id": "0114",
+      "name": "Barbell Step-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0114.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0431",
+      "name": "Dumbbell Step-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0431.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1008",
+      "name": "Band Step-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1008.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2796",
+      "name": "Dumbbell Step-up Lunge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2796.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2812",
+      "name": "Dumbbell Step-up Split Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2812.gif",
+      "score": 0.95
+    }
+  ],
+  "Sentadilla hack": [
+    {
+      "id": "0046",
+      "name": "Barbell Hack Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0046.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0741",
+      "name": "Sled Closer Hack Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0741.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0743",
+      "name": "Sled Hack Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0743.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0755",
+      "name": "Smith Hack Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0755.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0413",
+      "name": "Dumbbell Squat",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0413.gif",
+      "score": 0.5
+    }
+  ],
+  "Hip thrust": [
+    {
+      "id": "3236",
+      "name": "Resistance Band Hip Thrusts On Knees (female)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3236.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0130",
+      "name": "Bench Hip Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0130.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0168",
+      "name": "Cable Hip Adduction",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0168.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0710",
+      "name": "Side Hip Abduction",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0710.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "1408",
+      "name": "Band Hip Lift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1408.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Peso muerto rumano": [
+    {
+      "id": "0085",
+      "name": "Barbell Romanian Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0085.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1459",
+      "name": "Dumbbell Romanian Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1459.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0032",
+      "name": "Barbell Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0032.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0157",
+      "name": "Cable Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0157.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0300",
+      "name": "Dumbbell Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0300.gif",
+      "score": 0.5
+    }
+  ],
+  "Femoral parado": [
+    {
+      "id": "0795",
+      "name": "Standing Single Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0795.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0582",
+      "name": "Lever Kneeling Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0582.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0586",
+      "name": "Lever Lying Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0586.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0599",
+      "name": "Lever Seated Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0599.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0496",
+      "name": "Inverse Leg Curl (bench Support)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0496.gif",
+      "score": 0.4
+    }
+  ],
+  "Femoral sentado": [
+    {
+      "id": "0599",
+      "name": "Lever Seated Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0599.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0582",
+      "name": "Lever Kneeling Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0582.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0586",
+      "name": "Lever Lying Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0586.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0795",
+      "name": "Standing Single Leg Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0795.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0496",
+      "name": "Inverse Leg Curl (bench Support)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0496.gif",
+      "score": 0.4
+    }
+  ],
+  "Patada de glúteo en polea": [
+    {
+      "id": "0157",
+      "name": "Cable Deadlift",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0157.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0168",
+      "name": "Cable Hip Adduction",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0168.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "1424",
+      "name": "Seated Glute Stretch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1424.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "3193",
+      "name": "Glute-ham Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3193.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "3561",
+      "name": "Glute Bridge March",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3561.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Puente de glúteo": [
+    {
+      "id": "1409",
+      "name": "Barbell Glute Bridge",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1409.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3013",
+      "name": "Low Glute Bridge On Floor",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3013.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3523",
+      "name": "Glute Bridge Two Legs On Bench (male)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3523.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3561",
+      "name": "Glute Bridge March",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3561.gif",
+      "score": 0.95
+    },
+    {
+      "id": "3562",
+      "name": "Barbell Glute Bridge Two Legs On Bench (male)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/3562.gif",
+      "score": 0.95
+    }
+  ],
+  "Press militar con barra": [
+    {
+      "id": "0603",
+      "name": "Lever Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0603.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0997",
+      "name": "Band Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0997.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0091",
+      "name": "Barbell Seated Overhead Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0091.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0105",
+      "name": "Barbell Standing Bradford Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0105.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0087",
+      "name": "Barbell Seated Bradford Rocky Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0087.gif",
+      "score": 0.4
+    }
+  ],
+  "Press militar mancuerna": [
+    {
+      "id": "0405",
+      "name": "Dumbbell Seated Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0405.gif",
+      "score": 0.75
+    },
+    {
+      "id": "0299",
+      "name": "Dumbbell Cuban Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0299.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0438",
+      "name": "Dumbbell W-press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0438.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0603",
+      "name": "Lever Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0603.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0997",
+      "name": "Band Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0997.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Elevación lateral": [
+    {
+      "id": "0178",
+      "name": "Cable Lateral Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0178.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0192",
+      "name": "Cable One Arm Lateral Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0192.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0215",
+      "name": "Cable Seated Rear Lateral Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0215.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0311",
+      "name": "Dumbbell Full Can Lateral Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0311.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0323",
+      "name": "Dumbbell Incline One Arm Lateral Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0323.gif",
+      "score": 0.95
+    }
+  ],
+  "Elevación frontal": [
+    {
+      "id": "0041",
+      "name": "Barbell Front Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0041.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0107",
+      "name": "Barbell Standing Front Raise Over Head",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0107.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0162",
+      "name": "Cable Front Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0162.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0309",
+      "name": "Dumbbell Front Raise V. 2",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0309.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0310",
+      "name": "Dumbbell Front Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0310.gif",
+      "score": 0.95
+    }
+  ],
+  "Pájaro (deltoide posterior)": [
+    {
+      "id": "0154",
+      "name": "Cable Cross-over Reverse Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0154.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0225",
+      "name": "Cable Standing Cross-over High Reverse Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0225.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0240",
+      "name": "Cable Supine Reverse Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0240.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0359",
+      "name": "Dumbbell One Arm Reverse Fly (with Support)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0359.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0383",
+      "name": "Dumbbell Reverse Fly",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0383.gif",
+      "score": 0.95
+    }
+  ],
+  "Press Arnold": [
+    {
+      "id": "0287",
+      "name": "Dumbbell Arnold Press V. 2",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0287.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0523",
+      "name": "Kettlebell Arnold Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0523.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2137",
+      "name": "Dumbbell Arnold Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2137.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0219",
+      "name": "Cable Shoulder Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0219.gif",
+      "score": 0.3333333333333333
+    },
+    {
+      "id": "0299",
+      "name": "Dumbbell Cuban Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0299.gif",
+      "score": 0.3333333333333333
+    }
+  ],
+  "Encogimientos (trapecio)": [
+    {
+      "id": "0041",
+      "name": "Barbell Front Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0041.gif",
+      "score": 0
+    },
+    {
+      "id": "0067",
+      "name": "Barbell One Arm Snatch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0067.gif",
+      "score": 0
+    },
+    {
+      "id": "0075",
+      "name": "Barbell Rear Delt Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0075.gif",
+      "score": 0
+    },
+    {
+      "id": "0076",
+      "name": "Barbell Rear Delt Row",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0076.gif",
+      "score": 0
+    },
+    {
+      "id": "0086",
+      "name": "Barbell Seated Behind Head Military Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0086.gif",
+      "score": 0
+    }
+  ],
+  "Curl con barra": [
+    {
+      "id": "0031",
+      "name": "Barbell Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0031.gif",
+      "score": 1
+    },
+    {
+      "id": "0447",
+      "name": "Ez Barbell Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0447.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0038",
+      "name": "Barbell Drag Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0038.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0070",
+      "name": "Barbell Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0070.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0080",
+      "name": "Barbell Reverse Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0080.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Curl con mancuerna": [
+    {
+      "id": "0294",
+      "name": "Dumbbell Biceps Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0294.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0297",
+      "name": "Dumbbell Concentration Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0297.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0313",
+      "name": "Dumbbell Hammer Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0313.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0318",
+      "name": "Dumbbell Incline Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0318.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0372",
+      "name": "Dumbbell Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0372.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Curl martillo": [
+    {
+      "id": "0165",
+      "name": "Cable Hammer Curl (with Rope)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0165.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0298",
+      "name": "Dumbbell Cross Body Hammer Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0298.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0312",
+      "name": "Dumbbell Hammer Curl V. 2",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0312.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0313",
+      "name": "Dumbbell Hammer Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0313.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0320",
+      "name": "Dumbbell Incline Hammer Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0320.gif",
+      "score": 0.95
+    }
+  ],
+  "Curl en banco Scott": [
+    {
+      "id": "0059",
+      "name": "Barbell Lying Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0059.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0070",
+      "name": "Barbell Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0070.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0081",
+      "name": "Barbell Reverse Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0081.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0195",
+      "name": "Cable Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0195.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0209",
+      "name": "Cable Reverse Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0209.gif",
+      "score": 0.95
+    }
+  ],
+  "Curl en polea": [
+    {
+      "id": "0868",
+      "name": "Cable Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0868.gif",
+      "score": 1
+    },
+    {
+      "id": "0195",
+      "name": "Cable Preacher Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0195.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0206",
+      "name": "Cable Reverse Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0206.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "1631",
+      "name": "Cable Concentration Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1631.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "1632",
+      "name": "Cable Drag Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1632.gif",
+      "score": 0.6666666666666666
+    }
+  ],
+  "Extensión de tríceps": [
+    {
+      "id": "0018",
+      "name": "Assisted Standing Triceps Extension (with Towel)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0018.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0056",
+      "name": "Barbell Lying Close-grip Triceps Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0056.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0060",
+      "name": "Barbell Lying Triceps Extension Skull Crusher",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0060.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0061",
+      "name": "Barbell Lying Triceps Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0061.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0092",
+      "name": "Barbell Seated Overhead Triceps Extension",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0092.gif",
+      "score": 0.95
+    }
+  ],
+  "Press francés": [
+    {
+      "id": "0060",
+      "name": "Barbell Lying Triceps Extension Skull Crusher",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0060.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0035",
+      "name": "Barbell Decline Close Grip To Skull Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0035.gif",
+      "score": 0.14285714285714285
+    },
+    {
+      "id": "0018",
+      "name": "Assisted Standing Triceps Extension (with Towel)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0018.gif",
+      "score": 0
+    },
+    {
+      "id": "0019",
+      "name": "Assisted Triceps Dip (kneeling)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0019.gif",
+      "score": 0
+    },
+    {
+      "id": "0023",
+      "name": "Barbell Alternate Biceps Curl",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0023.gif",
+      "score": 0
+    }
+  ],
+  "Extensión en polea (cuerda)": [
+    {
+      "id": "0241",
+      "name": "Cable Triceps Pushdown (v-bar)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0241.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2405",
+      "name": "Cable Triceps Pushdown (v-bar) (with Arm Blaster)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2405.gif",
+      "score": 0.95
+    },
+    {
+      "id": "2406",
+      "name": "Cable Reverse Grip Triceps Pushdown (sz-bar) (with Arm Blaster)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/2406.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0201",
+      "name": "Cable Pushdown",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0201.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0814",
+      "name": "Triceps Dip",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0814.gif",
+      "score": 0.5
+    }
+  ],
+  "Fondos entre bancos": [
+    {
+      "id": "0129",
+      "name": "Bench Dip (knees Bent)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0129.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0830",
+      "name": "Weighted Bench Dip",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0830.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1399",
+      "name": "Bench Dip On Floor",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1399.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1753",
+      "name": "Three Bench Dip",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1753.gif",
+      "score": 0.95
+    },
+    {
+      "id": "1754",
+      "name": "Weighted Three Bench Dips",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/1754.gif",
+      "score": 0.95
+    }
+  ],
+  "Patada de tríceps": [
+    {
+      "id": "0333",
+      "name": "Dumbbell Kickback",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0333.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0814",
+      "name": "Triceps Dip",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0814.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0816",
+      "name": "Triceps Press",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0816.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0817",
+      "name": "Triceps Stretch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0817.gif",
+      "score": 0.5
+    },
+    {
+      "id": "0860",
+      "name": "Cable Kickback",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0860.gif",
+      "score": 0.5
+    }
+  ],
+  "Crunch abdominal": [
+    {
+      "id": "0175",
+      "name": "Cable Kneeling Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0175.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0212",
+      "name": "Cable Seated Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0212.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0221",
+      "name": "Cable Side Bend Crunch (bosu Ball)",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0221.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0223",
+      "name": "Cable Side Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0223.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0226",
+      "name": "Cable Standing Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0226.gif",
+      "score": 0.95
+    }
+  ],
+  "Elevación de piernas": [
+    {
+      "id": "0012",
+      "name": "Assisted Lying Leg Raise With Lateral Throw Down",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0012.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0013",
+      "name": "Assisted Lying Leg Raise With Throw Down",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0013.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0472",
+      "name": "Hanging Leg Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0472.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0475",
+      "name": "Hanging Straight Leg Raise",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0475.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0600",
+      "name": "Lever Seated Leg Raise Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0600.gif",
+      "score": 0.95
+    }
+  ],
+  "Plancha": [
+    {
+      "id": "0464",
+      "name": "Front Plank With Twist",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0464.gif",
+      "score": 0.95
+    },
+    {
+      "id": "0001",
+      "name": "3/4 Sit-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0001.gif",
+      "score": 0
+    },
+    {
+      "id": "0002",
+      "name": "45° Side Bend",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0002.gif",
+      "score": 0
+    },
+    {
+      "id": "0003",
+      "name": "Air Bike",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0003.gif",
+      "score": 0
+    },
+    {
+      "id": "0006",
+      "name": "Alternate Heel Touchers",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0006.gif",
+      "score": 0
+    }
+  ],
+  "Rueda abdominal": [
+    {
+      "id": "0103",
+      "name": "Barbell Standing Ab Rollerout",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0103.gif",
+      "score": 0.25
+    },
+    {
+      "id": "0001",
+      "name": "3/4 Sit-up",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0001.gif",
+      "score": 0
+    },
+    {
+      "id": "0002",
+      "name": "45° Side Bend",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0002.gif",
+      "score": 0
+    },
+    {
+      "id": "0003",
+      "name": "Air Bike",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0003.gif",
+      "score": 0
+    },
+    {
+      "id": "0006",
+      "name": "Alternate Heel Touchers",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0006.gif",
+      "score": 0
+    }
+  ],
+  "Abdominales en polea": [
+    {
+      "id": "0175",
+      "name": "Cable Kneeling Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0175.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0212",
+      "name": "Cable Seated Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0212.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0223",
+      "name": "Cable Side Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0223.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0226",
+      "name": "Cable Standing Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0226.gif",
+      "score": 0.6666666666666666
+    },
+    {
+      "id": "0242",
+      "name": "Cable Tuck Reverse Crunch",
+      "gifUrl": "https://api.workoutxapp.com/v1/gifs/0242.gif",
+      "score": 0.5
+    }
+  ],
+  "Burpee": [],
+  "Cinta / trote": [],
+  "Bicicleta estática": [],
+  "Remo (máquina cardio)": [],
+  "Cuerda / saltar la cuerda": []
+}

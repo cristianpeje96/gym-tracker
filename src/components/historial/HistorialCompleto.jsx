@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useEntrenamiento } from "../../contexts/EntrenamientoContext";
 import { GraficoProgresoAvanzado } from "./GraficoProgresoAvanzado";
 import { ComparativaSemanal } from "./ComparativaSemanal";
+import { DetalleSesion } from "./DetalleSesion";
 import {
   BarChart3,
   TrendingUp,
@@ -17,6 +18,7 @@ export const HistorialCompleto = () => {
   const { historial, cargando } = useEntrenamiento();
   const [ejercicioSeleccionado, setEjercicioSeleccionado] = useState("");
   const [vista, setVista] = useState("progreso");
+  const [sesionSeleccionada, setSesionSeleccionada] = useState(null);
 
   const ejercicios = useMemo(() => {
     const set = new Set();
@@ -92,10 +94,19 @@ export const HistorialCompleto = () => {
                     .reverse()
                     .slice(0, 20)
                     .map((sesion, idx) => (
-                      <div key={idx} className="historial__sesion">
+                      <button
+                        key={idx}
+                        className="historial__sesion"
+                        onClick={() => setSesionSeleccionada(sesion)}
+                      >
                         <div className="historial__sesion-header">
                           <span>
-                            <strong>{sesion.fecha}</strong> - {sesion.dia}
+                            <strong>
+                              {sesion.diaNumero
+                                ? `Día ${sesion.diaNumero}`
+                                : sesion.dia || "Sesión"}
+                            </strong>{" "}
+                            · {sesion.fecha}
                           </span>
                           <span>
                             {sesion.ejercicios
@@ -116,7 +127,7 @@ export const HistorialCompleto = () => {
                               )
                             : "Sin datos"}
                         </div>
-                      </div>
+                      </button>
                     ))
                 )}
               </div>
@@ -128,6 +139,13 @@ export const HistorialCompleto = () => {
             {historial.length}
           </div>
         </>
+      )}
+
+      {sesionSeleccionada && (
+        <DetalleSesion
+          sesion={sesionSeleccionada}
+          onCerrar={() => setSesionSeleccionada(null)}
+        />
       )}
     </div>
   );

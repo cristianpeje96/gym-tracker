@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useEntrenamiento } from "../../contexts/EntrenamientoContext";
 import { planService } from "../../services/planService";
-import { getDiaActual } from "../../utils/helpers";
+import { obtenerGifPorNombre } from "../../constants/ejerciciosLibrary";
 import { detectarNuevosPRs } from "../../utils/gamificacion";
 import { SerieInput } from "./SerieInput";
 import { SelectorEjercicios } from "../common/SelectorEjercicios/SelectorEjercicios";
@@ -18,49 +18,82 @@ import {
   Loader2,
   WifiOff,
   Wifi,
+  Video,
 } from "lucide-react";
 import "./Entrenamiento.css";
 
 export const Entrenamiento = () => {
   const { user } = useAuth();
-  const { guardarSesion, historial } = useEntrenamiento();
+  const {
+    guardarSesion,
+    historial,
+    sesionEnCurso,
+    actualizarSesionEnCurso,
+    limpiarSesionEnCurso,
+  } = useEntrenamiento();
+  const { indiceSeleccionado, sesionActual, ejerciciosExtra } = sesionEnCurso;
+
   const [plan, setPlan] = useState(null);
-  const [sesionActual, setSesionActual] = useState({});
-  const [ejerciciosExtra, setEjerciciosExtra] = useState([]);
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState(null);
   const [selectorAbierto, setSelectorAbierto] = useState(false);
-
-  // Bug corregido: antes estaba fijo en "Lunes" para pruebas.
-  // Ahora usa el día real de la semana.
-  const hoy = getDiaActual();
+  const [gifsAbiertos, setGifsAbiertos] = useState(new Set());
 
   const cargarPlan = useCallback(async () => {
     if (!user) return;
     const planUsuario = await planService.obtenerPlan(user.uid);
     setPlan(planUsuario);
+    // Solo fija el día sugerido como seleccionado si el usuario no tenía
+    // ya uno elegido (por ejemplo, si venía de otra pestaña a medio
+    // llenar una sesión, no le pisamos su selección).
+    if (indiceSeleccionado === null) {
+      actualizarSesionEnCurso({
+        indiceSeleccionado: planUsuario.diaActualIndice,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   useEffect(() => {
     cargarPlan();
   }, [cargarPlan]);
 
-  const planHoy = plan?.[hoy];
-  const ejerciciosBase = planHoy?.ejercicios || [];
+  const indiceDia = indiceSeleccionado ?? plan?.diaActualIndice ?? 0;
+  const diaPlan = plan?.dias?.[indiceDia];
+  const ejerciciosBase = diaPlan?.ejercicios || [];
   const ejerciciosMostrados = [...ejerciciosBase, ...ejerciciosExtra];
 
   const handleGuardarSerie = (nombreEjercicio, serieIndex, datos) => {
-    setSesionActual((prev) => {
-      const ejercicioActual = prev[nombreEjercicio] || [];
-      const nuevasSeries = [...ejercicioActual];
-      nuevasSeries[serieIndex] = datos;
-      return { ...prev, [nombreEjercicio]: nuevasSeries };
+    const ejercicioActual = sesionActual[nombreEjercicio] || [];
+    const nuevasSeries = [...ejercicioActual];
+    nuevasSeries[serieIndex] = datos;
+    actualizarSesionEnCurso({
+      sesionActual: { ...sesionActual, [nombreEjercicio]: nuevasSeries },
     });
   };
 
   const handleAgregarExtra = (ejercicio) => {
-    setEjerciciosExtra((prev) => [...prev, ejercicio]);
+    actualizarSesionEnCurso({
+      ejerciciosExtra: [...ejerciciosExtra, ejercicio],
+    });
     setSelectorAbierto(false);
+  };
+
+  const handleCambiarDia = (indice) => {
+    actualizarSesionEnCurso({
+      indiceSeleccionado: indice,
+      sesionActual: {},
+      ejerciciosExtra: [],
+    });
+  };
+
+  const toggleGif = (ejIdx) => {
+    setGifsAbiertos((prev) => {
+      const nuevo = new Set(prev);
+      if (nuevo.has(ejIdx)) nuevo.delete(ejIdx);
+      else nuevo.add(ejIdx);
+      return nuevo;
+    });
   };
 
   const handleGuardarSesion = async () => {
@@ -92,7 +125,7 @@ export const Entrenamiento = () => {
     const sesion = {
       fecha: new Date().toISOString().split("T")[0],
       hora: new Date().toLocaleTimeString(),
-      dia: hoy,
+      diaNumero: indiceDia + 1,
       ejercicios: sesionActual,
     };
 
@@ -118,8 +151,56 @@ export const Entrenamiento = () => {
           texto: `¡Sesión guardada! ${seriesCompletadas} series completadas`,
         });
       }
-      setSesionActual({});
-      setEjerciciosExtra([]);
+
+      // Actualiza en el plan las series/reps/kg reales de lo que se hizo
+      // hoy, para que la próxima vez el objetivo mostrado ("4x8 (40kg)")
+      // refleje lo último realizado, no lo que se había puesto al armar
+      // la rutina.
+      let planTrasActualizar = plan;
+      if (planTrasActualizar) {
+        for (const nombreEjercicio of Object.keys(sesionActual)) {
+          const perteneceAlPlan = ejerciciosBase.some(
+            (ej) => ej.nombre === nombreEjercicio,
+          );
+          if (!perteneceAlPlan) continue;
+
+          const realizados = (sesionActual[nombreEjercicio] || []).filter(
+            (s) => s?.realizado,
+          );
+          if (realizados.length === 0) continue;
+
+          const ultimo = realizados[realizados.length - 1];
+          const { success, plan: planActualizado } =
+            await planService.actualizarEjercicioEnDia(
+              user.uid,
+              planTrasActualizar,
+              indiceDia,
+              nombreEjercicio,
+              {
+                series: realizados.length,
+                reps: ultimo.reps,
+                carga: ultimo.carga,
+              },
+            );
+          if (success) planTrasActualizar = planActualizado;
+        }
+      }
+
+      // Avanza el "día sugerido" al siguiente de la rotación.
+      if (planTrasActualizar && planTrasActualizar.dias.length > 0) {
+        const siguiente = (indiceDia + 1) % planTrasActualizar.dias.length;
+        const { success, plan: planFinal } =
+          await planService.establecerDiaActual(
+            user.uid,
+            planTrasActualizar,
+            siguiente,
+          );
+        setPlan(success ? planFinal : planTrasActualizar);
+      } else {
+        setPlan(planTrasActualizar);
+      }
+
+      limpiarSesionEnCurso();
     } else {
       setMensaje({
         tipo: "error",
@@ -132,7 +213,9 @@ export const Entrenamiento = () => {
     setTimeout(() => setMensaje(null), huboPR ? 5000 : 3000);
   };
 
-  const esDiaDescanso = !planHoy || ejerciciosMostrados.length === 0;
+  const sinDiasConfigurados = !plan || plan.dias.length === 0;
+  const diaSinEjercicios =
+    !sinDiasConfigurados && ejerciciosMostrados.length === 0;
 
   return (
     <div className="entrenamiento">
@@ -146,9 +229,9 @@ export const Entrenamiento = () => {
       )}
 
       <div className="entrenamiento__header">
-        <h2 className="entrenamiento__dia">{hoy}</h2>
+        <h2 className="entrenamiento__dia">Día {indiceDia + 1}</h2>
         <p className="entrenamiento__nombre-rutina">
-          {planHoy?.nombre || "Sin rutina asignada"}
+          {diaPlan?.nombre || "Sin rutina asignada"}
         </p>
         <p
           className={`entrenamiento__estado ${user ? "entrenamiento__estado--ok" : "entrenamiento__estado--error"}`}
@@ -165,56 +248,109 @@ export const Entrenamiento = () => {
         </p>
       </div>
 
-      {esDiaDescanso && (
+      {!sinDiasConfigurados && plan.dias.length > 1 && (
+        <div className="entrenamiento__selector-dias">
+          {plan.dias.map((_, idx) => (
+            <button
+              key={idx}
+              className={`entrenamiento__dia-chip ${idx === indiceDia ? "entrenamiento__dia-chip--activo" : ""}`}
+              onClick={() => handleCambiarDia(idx)}
+            >
+              Día {idx + 1}
+              {idx === plan.diaActualIndice && (
+                <span className="entrenamiento__dia-chip-badge">sugerido</span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {sinDiasConfigurados && (
         <div className="entrenamiento__descanso">
           <PartyPopper
             size={48}
             strokeWidth={1.5}
             className="entrenamiento__descanso-icono"
           />
-          <h3>¡Día de descanso!</h3>
-          <p>
-            Recupera tus músculos y vuelve más fuerte mañana. Si tu instructor
-            te dejó algo para hoy, agrégalo abajo.
-          </p>
+          <h3>Aún no tienes días configurados</h3>
+          <p>Ve a la pestaña "Plan" y arma tu rutina por días.</p>
         </div>
       )}
 
-      {ejerciciosMostrados.map((ejercicio, ejIdx) => (
-        <div key={ejIdx} className="entrenamiento__ejercicio">
-          <h4 className="entrenamiento__ejercicio-nombre">
-            {ejercicio.nombre}
-          </h4>
-          <p className="entrenamiento__ejercicio-objetivo">
-            <Target size={14} strokeWidth={1.75} /> {ejercicio.series} ×{" "}
-            {ejercicio.reps}{" "}
-            {ejercicio.carga > 0
-              ? `(${ejercicio.carga} kg)`
-              : "(peso corporal)"}
-          </p>
-
-          {[...Array(ejercicio.series)].map((_, serieIdx) => (
-            <SerieInput
-              key={serieIdx}
-              numero={serieIdx + 1}
-              repsObjetivo={ejercicio.reps}
-              cargaObjetivo={ejercicio.carga}
-              onGuardar={(datos) =>
-                handleGuardarSerie(ejercicio.nombre, serieIdx, datos)
-              }
-            />
-          ))}
+      {diaSinEjercicios && (
+        <div className="entrenamiento__descanso">
+          <PartyPopper
+            size={48}
+            strokeWidth={1.5}
+            className="entrenamiento__descanso-icono"
+          />
+          <h3>Este día no tiene ejercicios todavía</h3>
+          <p>Agrégalos desde aquí abajo, o edítalo desde la pestaña "Plan".</p>
         </div>
-      ))}
+      )}
 
-      <button
-        className="entrenamiento__btn-agregar-ejercicio"
-        onClick={() => setSelectorAbierto(true)}
-      >
-        <Plus size={16} strokeWidth={2} /> Agregar ejercicio
-      </button>
+      {ejerciciosMostrados.map((ejercicio, ejIdx) => {
+        const gifUrl = obtenerGifPorNombre(ejercicio.nombre);
+        const gifAbierto = gifsAbiertos.has(ejIdx);
+        return (
+          <div key={ejIdx} className="entrenamiento__ejercicio">
+            <div className="entrenamiento__ejercicio-header">
+              <h4 className="entrenamiento__ejercicio-nombre">
+                {ejercicio.nombre}
+              </h4>
+              {gifUrl && (
+                <button
+                  className="entrenamiento__btn-ver-gif"
+                  onClick={() => toggleGif(ejIdx)}
+                  type="button"
+                >
+                  <Video size={13} strokeWidth={1.75} />
+                  {gifAbierto ? "Ocultar" : "Ver ejecución"}
+                </button>
+              )}
+            </div>
+            <p className="entrenamiento__ejercicio-objetivo">
+              <Target size={14} strokeWidth={1.75} /> {ejercicio.series} ×{" "}
+              {ejercicio.reps}{" "}
+              {ejercicio.carga > 0
+                ? `(${ejercicio.carga} kg)`
+                : "(peso corporal)"}
+            </p>
 
-      {!esDiaDescanso && (
+            {gifAbierto && gifUrl && (
+              <img
+                src={gifUrl}
+                alt={`Cómo hacer ${ejercicio.nombre}`}
+                className="entrenamiento__gif"
+                loading="lazy"
+              />
+            )}
+
+            {[...Array(ejercicio.series)].map((_, serieIdx) => (
+              <SerieInput
+                key={serieIdx}
+                numero={serieIdx + 1}
+                repsObjetivo={ejercicio.reps}
+                cargaObjetivo={ejercicio.carga}
+                onGuardar={(datos) =>
+                  handleGuardarSerie(ejercicio.nombre, serieIdx, datos)
+                }
+              />
+            ))}
+          </div>
+        );
+      })}
+
+      {!sinDiasConfigurados && (
+        <button
+          className="entrenamiento__btn-agregar-ejercicio"
+          onClick={() => setSelectorAbierto(true)}
+        >
+          <Plus size={16} strokeWidth={2} /> Agregar ejercicio
+        </button>
+      )}
+
+      {!sinDiasConfigurados && !diaSinEjercicios && (
         <button
           className="entrenamiento__btn-guardar"
           onClick={handleGuardarSesion}

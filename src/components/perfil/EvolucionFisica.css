@@ -1,0 +1,70 @@
+.evolucion-fisica__tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.evolucion-fisica__tab {
+  flex: 1;
+  padding: 9px;
+  background: var(--color-paper);
+  color: var(--color-ink-soft);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.evolucion-fisica__tab--activo {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  color: #fff;
+}
+
+.evolucion-fisica__select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 13px;
+}
+
+.evolucion-fisica__vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--color-ink-soft);
+  font-size: 13px;
+  text-transform: none;
+}
+
+.evolucion-fisica__resumen {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.evolucion-fisica__resumen-valor {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+.evolucion-fisica__tendencia {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-lavanda);
+}

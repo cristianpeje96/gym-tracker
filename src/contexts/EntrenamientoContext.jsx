@@ -11,6 +11,16 @@ export const EntrenamientoProvider = ({ children }) => {
   const [historial, setHistorial] = useState([]);
   const [cargando, setCargando] = useState(true);
 
+  // Estado de la sesión que se está llenando en "Entrenar". Vive aquí
+  // (en el Provider, que envuelve toda la app) en vez de como estado
+  // local del componente Entrenamiento, para que NO se borre si el
+  // usuario cambia a otra pestaña (Historial, Plan, etc.) y vuelve.
+  const [sesionEnCurso, setSesionEnCurso] = useState({
+    indiceSeleccionado: null,
+    sesionActual: {},
+    ejerciciosExtra: [],
+  });
+
   useEffect(() => {
     if (user) {
       cargarHistorial();
@@ -44,6 +54,18 @@ export const EntrenamientoProvider = ({ children }) => {
     return resultado.success;
   };
 
+  const actualizarSesionEnCurso = (cambios) => {
+    setSesionEnCurso((prev) => ({ ...prev, ...cambios }));
+  };
+
+  const limpiarSesionEnCurso = () => {
+    setSesionEnCurso((prev) => ({
+      ...prev,
+      sesionActual: {},
+      ejerciciosExtra: [],
+    }));
+  };
+
   return (
     <EntrenamientoContext.Provider
       value={{
@@ -51,6 +73,9 @@ export const EntrenamientoProvider = ({ children }) => {
         cargando,
         guardarSesion,
         recargar: cargarHistorial,
+        sesionEnCurso,
+        actualizarSesionEnCurso,
+        limpiarSesionEnCurso,
       }}
     >
       {children}
